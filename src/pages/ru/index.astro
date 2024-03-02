@@ -1,0 +1,15 @@
+---
+import { Lang, Page, getPageTitle } from "../../shared";
+
+import Layout from "../../layouts/layout.astro";
+import Drawer from "../../layouts/drawer.astro";
+import Content from "../../layouts/content.astro";
+
+const currentPage = Page.Resume;
+---
+
+<Layout currentPage={currentPage}>
+  <Drawer currentPage={currentPage}>
+    <Content> Content </Content>
+  </Drawer>
+</Layout>

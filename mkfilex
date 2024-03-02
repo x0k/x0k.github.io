@@ -1,0 +1,7 @@
+#!/usr/bin/bash -xe
+
+d:
+  npm run dev
+
+p:
+  npx prettier --write .
