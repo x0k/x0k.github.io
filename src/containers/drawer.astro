@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
 
-import { Page, Lang, getNextLang } from "../shared";
+import { Page, Lang, getNextLang, EMAIL } from "../shared";
 import { getPageLabel, useTranslations } from '../i18n';
 
 import ThemeController from "../components/theme-controller.astro";
@@ -80,13 +80,13 @@ const t = useTranslations(lang);
         }
       </ul>
       <div class="p-4 flex self-center justify-evenly items-center w-full">
+        <a target="_blank" href={`mailto:${EMAIL}`} >
+          <Icon size={24} name="lucide:mail" />
+        </a>
         <a target="_blank" href="https://github.com/x0k">
           <Icon size={24} name="simple-icons:github" />
         </a>
-        <a target="_blank" href="mailto:x4s9hvyny@mozmail.com" >
-          <Icon size={24} name="lucide:mail" />
-        </a>
-        <ThemeController />
+        <ThemeController transition:persist />
         <a href={getAbsoluteLocaleUrl(nextLang, currentPage)}>
           {lang.toLocaleUpperCase()}
         </a>

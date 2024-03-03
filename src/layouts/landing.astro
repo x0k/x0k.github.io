@@ -1,0 +1,21 @@
+---
+import Content from "../components/content.astro";
+
+import Layout from "../containers/root.astro";
+import Drawer from "../containers/drawer.astro";
+
+import { Page } from '../shared';
+
+interface Props {
+  currentPage: Page;
+}
+
+const { currentPage } = Astro.props
+---
+<Layout currentPage={currentPage}>
+  <Drawer currentPage={currentPage}>
+    <Content>
+      <slot />
+    </Content>
+  </Drawer>
+</Layout>
