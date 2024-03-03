@@ -1,6 +1,6 @@
 ---
 import { type Lang, type Page } from "../shared";
-import { getPageLabel, useTranslations } from "../i18n";
+import { Label, getPageLabel, useTranslations } from "../i18n";
 
 interface Props {
   currentPage: Page;
@@ -12,6 +12,7 @@ const lang = Astro.currentLocale as Lang;
 
 const t = useTranslations(lang);
 const title = t(getPageLabel(currentPage));
+const name = t(Label.Name)
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const title = t(getPageLabel(currentPage));
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{name} - {title}</title>
   </head>
   <body>
     <slot />
