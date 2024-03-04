@@ -1,0 +1,160 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const CATEGORTY_TO_ICON: Record<
+  CollectionEntry<"projects">["data"]["category"],
+  string
+> = {
+  app: "lucide:layout-grid",
+  browserExtension: "lucide:chrome",
+  cli: "lucide:terminal",
+  chatBot: "lucide:bot-message-square",
+  game: "lucide:gamepad-2",
+};
+
+const CATEGORTY_TO_TITLE: Record<
+  CollectionEntry<"projects">["data"]["category"],
+  string
+> = {
+  app: "Application",
+  browserExtension: "Browser Extension",
+  cli: "CLI",
+  chatBot: "Chat Bot",
+  game: "Game",
+};
+
+const LANG_TO_ICON: Record<
+  CollectionEntry<"projects">["data"]["lang"],
+  string
+> = {
+  typescript: "simple-icons:typescript",
+  golang: "simple-icons:go",
+  delphi: "simple-icons:delphi",
+};
+
+const LANG_TO_TITLE: Record<
+  CollectionEntry<"projects">["data"]["lang"],
+  string
+> = {
+  typescript: "TypeScript",
+  golang: "Go",
+  delphi: "Delphi",
+};
+
+const PLATFORM_TO_ICON: Record<
+  CollectionEntry<"projects">["data"]["platforms"][number],
+  string
+> = {
+  web: "lucide:globe",
+  desktop: "lucide:monitor",
+};
+
+const PLATFORM_TO_TITLE: Record<
+  CollectionEntry<"projects">["data"]["platforms"][number],
+  string
+> = {
+  web: "Web",
+  desktop: "Desktop",
+};
+
+const STACK_TO_ICON: Record<
+  Exclude<CollectionEntry<"projects">["data"]["stack"], undefined>[number],
+  string
+> = {
+  react: "simple-icons:react",
+  svelte: "simple-icons:svelte",
+  nextjs: "simple-icons:nextdotjs",
+  fmx: "simple-icons:embarcadero",
+  websocket: "lucide:unplug",
+};
+
+const STACK_TO_TITLE: Record<
+  Exclude<CollectionEntry<"projects">["data"]["stack"], undefined>[number],
+  string
+> = {
+  react: "React",
+  svelte: "Svelte",
+  nextjs: "Next.js",
+  fmx: "FireMonkey",
+  websocket: "WebSockets",
+};
+
+const INFRA_TO_ICON: Record<
+  Exclude<CollectionEntry<"projects">["data"]["infra"], undefined>[number],
+  string
+> = {
+  githubPages: "simple-icons:github",
+  notion: "simple-icons:notion",
+  vercel: "simple-icons:vercel",
+  docker: "simple-icons:docker",
+  terraform: "simple-icons:terraform",
+};
+
+const INFRA_TO_TITLE: Record<
+  Exclude<CollectionEntry<"projects">["data"]["infra"], undefined>[number],
+  string
+> = {
+  githubPages: "GitHub Pages",
+  notion: "Notion",
+  vercel: "Vercel",
+  docker: "Docker",
+  terraform: "Terraform",
+};
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+{
+  project.data.link ? (
+    <a target="_blank" href={project.data.link} class="link link-hover flex gap-2 py-3 pt-9">
+      <h2 class="text-3xl font-bold">{project.data.name}</h2>
+      <Icon name="lucide:external-link" />
+    </a>
+  ) : (
+    <h2 class="text-3xl py-3 pt-9 font-bold">{project.data.name}</h2>
+  )
+}
+<Content />
+<div class="flex gap-6 flex-wrap">
+  {
+    project.data.platforms.map((platform) => (
+      <div class="flex gap-2 items-center">
+        <Icon name={PLATFORM_TO_ICON[platform]} />
+        {PLATFORM_TO_TITLE[platform]}
+      </div>
+    ))
+  }
+  <div class="flex gap-2 items-center">
+    <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
+    {CATEGORTY_TO_TITLE[project.data.category]}
+  </div>
+  <div class="flex gap-2 items-center">
+    <Icon name={LANG_TO_ICON[project.data.lang]} />
+    {LANG_TO_TITLE[project.data.lang]}
+  </div>
+  <div class="flex gap-2 items-center">
+    <Icon name="lucide:github" /> Source
+  </div>
+  {
+    project.data.stack?.map((stack) => (
+      <div class="flex gap-2 items-center">
+        <Icon name={STACK_TO_ICON[stack]} />
+        {STACK_TO_TITLE[stack]}
+      </div>
+    ))
+  }
+  {
+    project.data.infra?.map((infra) => (
+      <div class="flex gap-2 items-center">
+        <Icon name={INFRA_TO_ICON[infra]} />
+        {INFRA_TO_TITLE[infra]}
+      </div>
+    ))
+  }
+</div>

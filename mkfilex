@@ -5,3 +5,6 @@ d:
 
 p:
   npx prettier --write .
+
+s:
+  npx astro sync

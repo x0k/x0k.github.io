@@ -1,7 +1,7 @@
 ---
 platforms:
   - web
-category: browser-extension
+category: browserExtension
 name: WebMaid
 source: "https://github.com/x0k/web-maid"
 createdAt: 2023-11-07
