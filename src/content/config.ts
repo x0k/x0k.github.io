@@ -1,7 +1,7 @@
 import { defineCollection, z } from "astro:content";
 
 const projectSchema = z.object({
-  platforms: z.array(z.enum(["web", "desktop"])),
+  platforms: z.array(z.enum(["web", "desktop"])).optional(),
   category: z.enum(["app", "cli", "chatBot", "game", "browserExtension"]),
   name: z.string(),
   source: z.string().url(),

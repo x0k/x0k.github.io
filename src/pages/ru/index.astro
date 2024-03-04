@@ -3,7 +3,8 @@ import { getAbsoluteLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 import { getYearsSinceDate } from "../../lib/date";
-import { Page, BIRTHDAY, EMAIL, Lang } from "../../shared";
+import { Page, BIRTHDAY, EMAIL } from "../../shared";
+import { Lang } from "../../i18n";
 
 import Layout from "../../layouts/landing.astro";
 
@@ -18,7 +19,7 @@ const lang = Astro.currentLocale as Lang;
 
   <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
     <div>
-      <h2 class="text-3xl py-3 pt-9 font-bold">Общая информация</h2>
+      <h2 class="text-3xl py-3 pt-12 font-bold">Общая информация</h2>
       <p>
         Эл. почта: <a class="link" target="_blank" href={`mailto:${EMAIL}`}
           >{EMAIL}</a
@@ -32,14 +33,14 @@ const lang = Astro.currentLocale as Lang;
       <p>Возраст: {getYearsSinceDate(BIRTHDAY)}</p>
     </div>
     <div>
-      <h2 class="text-3xl py-3 pt-9 font-bold">Образование</h2>
+      <h2 class="text-3xl py-3 pt-12 font-bold">Образование</h2>
       <p>Учебное заведение: СГУ им. Питирима Сорокина</p>
       <p>Направление: Прикладная информатика</p>
       <p>Период: 2015 - 2021</p>
     </div>
   </div>
 
-  <h2 class="text-3xl py-3 pt-9 font-bold">О себе</h2>
+  <h2 class="text-3xl py-3 pt-12 font-bold">О себе</h2>
 
   <p>
     Web-разработчик c опытом 4+ лет. В основном занимался разработкой и
@@ -53,7 +54,7 @@ const lang = Astro.currentLocale as Lang;
     своих проектов (CLI, Chat Bot) на языке Golang.
   </p>
 
-  <p class="text-3xl py-3 pt-9 font-bold">Опыт</p>
+  <p class="text-3xl py-3 pt-12 font-bold">Опыт</p>
   <ul class="timeline-compact timeline timeline-snap-icon timeline-vertical">
     <li>
       <div class="timeline-middle">

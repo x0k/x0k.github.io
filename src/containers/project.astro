@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import type { CollectionEntry } from "astro:content";
 
+import { Label, Lang, useTranslations } from "../i18n";
+
 interface Props {
   project: CollectionEntry<"projects">;
 }
@@ -47,7 +49,7 @@ const LANG_TO_TITLE: Record<
 };
 
 const PLATFORM_TO_ICON: Record<
-  CollectionEntry<"projects">["data"]["platforms"][number],
+  Exclude<CollectionEntry<"projects">["data"]["platforms"], undefined>[number],
   string
 > = {
   web: "lucide:globe",
@@ -55,7 +57,7 @@ const PLATFORM_TO_ICON: Record<
 };
 
 const PLATFORM_TO_TITLE: Record<
-  CollectionEntry<"projects">["data"]["platforms"][number],
+  Exclude<CollectionEntry<"projects">["data"]["platforms"], undefined>[number],
   string
 > = {
   web: "Web",
@@ -108,53 +110,91 @@ const INFRA_TO_TITLE: Record<
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
 ---
 
-{
-  project.data.link ? (
-    <a target="_blank" href={project.data.link} class="link link-hover flex gap-2 py-3 pt-9">
-      <h2 class="text-3xl font-bold">{project.data.name}</h2>
-      <Icon name="lucide:external-link" />
+<div class="rounded-xl shadow-lg p-4">
+  <div class="flex gap-2 items-center py-3">
+    <h2 class="text-3xl font-bold grow">{project.data.name}</h2>
+    <a
+      target="_blank"
+      href={project.data.source}
+      class="btn btn-ghost max-lg:btn-sm btn-circle"
+    >
+      <Icon class="size-5" name="lucide:github" />
     </a>
-  ) : (
-    <h2 class="text-3xl py-3 pt-9 font-bold">{project.data.name}</h2>
-  )
-}
-<Content />
-<div class="flex gap-6 flex-wrap">
-  {
-    project.data.platforms.map((platform) => (
-      <div class="flex gap-2 items-center">
-        <Icon name={PLATFORM_TO_ICON[platform]} />
-        {PLATFORM_TO_TITLE[platform]}
-      </div>
-    ))
-  }
-  <div class="flex gap-2 items-center">
-    <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
-    {CATEGORTY_TO_TITLE[project.data.category]}
+    {
+      project.data.link && (
+        <a
+          target="_blank"
+          href={project.data.link}
+          class="btn btn-ghost max-lg:btn-sm btn-circle"
+        >
+          <Icon class="size-5" name="lucide:external-link" />
+        </a>
+      )
+    }
   </div>
-  <div class="flex gap-2 items-center">
-    <Icon name={LANG_TO_ICON[project.data.lang]} />
-    {LANG_TO_TITLE[project.data.lang]}
+  <div class="grid grid-cols-4 pb-6 text-opacity-70">
+    <div class="flex gap-2 items-center">
+      <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
+      {CATEGORTY_TO_TITLE[project.data.category]}
+    </div>
+    <div class="flex gap-2 items-center">
+      <Icon name={LANG_TO_ICON[project.data.lang]} />
+      {LANG_TO_TITLE[project.data.lang]}
+    </div>
   </div>
-  <div class="flex gap-2 items-center">
-    <Icon name="lucide:github" /> Source
+
+  <Content />
+
+  <div class="grid lg:grid-cols-3 pt-6">
+    {
+      project.data.platforms && (
+        <div>
+          <p class="font-semibold">{t(Label.Platforms)}:</p>
+          <div class="flex gap-6 flex-wrap pt-3">
+            {project.data.platforms.map((platform) => (
+              <div class="flex gap-2 items-center">
+                <Icon name={PLATFORM_TO_ICON[platform]} />
+                {PLATFORM_TO_TITLE[platform]}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+    {
+      project.data.stack && (
+        <div>
+          <p class="font-semibold">{t(Label.Stack)}:</p>
+          <div class="flex gap-6 flex-wrap pt-3">
+            {project.data.stack.map((stack) => (
+              <div class="flex gap-2 items-center">
+                <Icon name={STACK_TO_ICON[stack]} />
+                {STACK_TO_TITLE[stack]}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
+    {
+      project.data.infra && (
+        <div>
+          <p class="font-semibold">{t(Label.Infra)}:</p>
+          <div class="flex gap-6 flex-wrap pt-3">
+            {project.data.infra.map((infra) => (
+              <div class="flex gap-2 items-center">
+                <Icon name={INFRA_TO_ICON[infra]} />
+                {INFRA_TO_TITLE[infra]}
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    }
   </div>
-  {
-    project.data.stack?.map((stack) => (
-      <div class="flex gap-2 items-center">
-        <Icon name={STACK_TO_ICON[stack]} />
-        {STACK_TO_TITLE[stack]}
-      </div>
-    ))
-  }
-  {
-    project.data.infra?.map((infra) => (
-      <div class="flex gap-2 items-center">
-        <Icon name={INFRA_TO_ICON[infra]} />
-        {INFRA_TO_TITLE[infra]}
-      </div>
-    ))
-  }
 </div>

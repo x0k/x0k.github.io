@@ -3,10 +3,10 @@ import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/landing.astro";
 
-import { Lang, Page } from "../../shared";
-import { useTranslations } from "../../i18n";
+import { Page } from "../../shared";
+import { Lang, useTranslations } from "../../i18n";
 
-import Project from '../../containers/project.astro'
+import Project from "../../containers/project.astro";
 
 const currentPage = Page.Projects;
 const lang = Astro.currentLocale as Lang;
@@ -16,10 +16,16 @@ const projects = await getCollection("projects");
 ---
 
 <Layout currentPage={currentPage}>
-  <h1 class="max-lg:hidden text-5xl text-opacity-50 text-base-content font-bold">Проекты</h1>
-  {
-    projects
-      .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
-      .map((project) => <Project project={project} />)
-  }
+  <h1
+    class="max-lg:hidden text-5xl text-opacity-50 text-base-content font-bold"
+  >
+    Проекты
+  </h1>
+  <div class="flex flex-col gap-4">
+    {
+      projects
+        .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
+        .map((project) => <Project project={project} />)
+    }
+  </div>
 </Layout>

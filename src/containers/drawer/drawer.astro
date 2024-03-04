@@ -2,8 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
 
-import { Page, Lang, getNextLang, EMAIL } from "../../shared";
-import { getPageLabel, useTranslations } from "../../i18n";
+import { Page, EMAIL } from "../../shared";
+import { Lang, getNextLang, getPageLabel, useTranslations } from "../../i18n";
 
 import ThemeController from "../../components/theme-controller.astro";
 
@@ -23,7 +23,9 @@ const t = useTranslations(lang);
   <input id="my-drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content flex flex-col">
     <!-- Navbar -->
-    <div class="navbar print:hidden z-50 sticky top-0 max-lg:bg-base-100 max-lg:shadow-md">
+    <div
+      class="navbar print:hidden z-50 sticky top-0 max-lg:bg-base-100 max-lg:shadow-md"
+    >
       <div class="navbar-start">
         <label
           for="my-drawer"
@@ -98,4 +100,3 @@ const t = useTranslations(lang);
     </aside>
   </div>
 </div>
-

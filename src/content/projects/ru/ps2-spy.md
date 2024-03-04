@@ -1,6 +1,4 @@
 ---
-platforms:
-  - desktop
 category: chatBot
 name: PlanetSide 2 Spy
 source: https://github.com/x0k/ps2-spy
