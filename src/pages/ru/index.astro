@@ -1,0 +1,155 @@
+---
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
+
+import { getYearsSinceDate } from "../../lib/date";
+import { Page, BIRTHDAY, EMAIL } from "../../shared";
+import { Lang } from "../../i18n";
+
+import Layout from "../../layouts/landing.astro";
+
+const currentPage = Page.Resume;
+const lang = Astro.currentLocale as Lang;
+---
+
+<Layout currentPage={currentPage}>
+  <h1 class="text-5xl text-opacity-50 text-base-content font-bold">
+    Красильников Роман Борисович
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+    <div>
+      <h2 class="text-3xl py-3 pt-12 font-bold">Общая информация</h2>
+      <p>
+        Эл. почта: <a class="link" target="_blank" href={`mailto:${EMAIL}`}
+          >{EMAIL}</a
+        >
+      </p>
+      <p>
+        GitHub: <a class="link" target="_blank" href="https://github.com/x0k"
+          >x0k</a
+        >
+      </p>
+      <p>Возраст: {getYearsSinceDate(BIRTHDAY)}</p>
+    </div>
+    <div>
+      <h2 class="text-3xl py-3 pt-12 font-bold">Образование</h2>
+      <p>Учебное заведение: СГУ им. Питирима Сорокина</p>
+      <p>Направление: Прикладная информатика</p>
+      <p>Период: 2015 - 2021</p>
+    </div>
+  </div>
+
+  <h2 class="text-3xl py-3 pt-12 font-bold">О себе</h2>
+
+  <p>
+    Web-разработчик c опытом 4+ лет. В основном занимался разработкой и
+    поддержкой фронтенд приложений (Typescript, React). Имею опыт разработки
+    бэкенд (NestJS), настольных (Electron) и фуллстек (SvelteKit) приложений,
+    расширений для браузеров.
+  </p>
+
+  <p>
+    Хочу развиваться как бэкенд разработчик, для чего занимаюсь разработкой
+    своих проектов (CLI, Chat Bot) на языке Golang.
+  </p>
+
+  <p class="text-3xl py-3 pt-12 font-bold">Опыт</p>
+  <ul class="timeline-compact timeline timeline-snap-icon timeline-vertical">
+    <li>
+      <div class="timeline-middle">
+        <Icon name="lucide:github" class="h-5 w-5" />
+      </div>
+      <div class="timeline-end mb-10">
+        <time class="font-mono italic">Декабрь 2022 - Настоящее время</time>
+        <div class="text-lg font-black">Open Source разработчик</div>
+        Реализую собственные проекты, изучаю новые технологии:
+        <ul class="list-disc list-inside">
+          <li>
+            Настроил инфраструктуру для разработки собственных проектов (Docker,
+            Ansible, Terraform)
+          </li>
+          <li>
+            Настроил мониторинг инфраструктуры и проектов (Grafana, Prometheus,
+            Loki)
+          </li>
+          <li>
+            Разработал:
+            <ul class="list-disc list-inside ml-4">
+              <li>
+                Приложение для представления любых JSON-данных в табличном виде
+                (Typescript, React)
+              </li>
+              <li>
+                Текстовый препроцессор для организации build скриптов (Golang)
+              </li>
+              <li>
+                Браузерное расширение для исполнения скриптов в браузере
+                (Typescript, React)
+              </li>
+              <li>
+                Discord bot для отслеживания игровой статистики в реальном
+                времени (Golang)
+              </li>
+              <li>
+                <a class="link" href={getAbsoluteLocaleUrl(lang, Page.Projects)}
+                  >Полный список</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <li>
+        <hr />
+        <div class="timeline-middle">
+          <Icon name="lucide:star" class="h-5 w-5" />
+        </div>
+        <div class="timeline-end mb-10">
+          <time class="font-mono italic">Декабрь 2021 - Декабрь 2022</time>
+          <div class="text-lg font-black">
+            Прохождение военной службы по призыву
+          </div>
+          Реализовал несколько проектов (Electron, Excel VBA), нашел время почитать
+          профильную литературу.
+        </div>
+        <hr />
+      </li>
+      <li>
+        <hr />
+        <div class="timeline-middle">
+          <Icon name="lucide:circle-dollar-sign" class="h-5 w-5" />
+        </div>
+        <div class="timeline-end mb-10">
+          <time class="font-mono italic">Февраль 2019 - Декабрь 2021</time>
+          <div class="text-lg font-black">
+            Web-разработчик в ГАУ РК “Центр информационных технологий”
+          </div>
+          Проекты и ответственность:
+          <ul class="list-disc list-inside">
+            <li>Поддержка региональных проектов: АИС “МФЦ”, СООЗ (React 15)</li>
+            <li>
+              Разработка внутренних сервисов: управление заявками, реестром
+              электронных подписей (React16)
+            </li>
+            <li>
+              Развитие аналитической системы мониторинга СМИ (Vue.js, NestJS)
+            </li>
+            <li>
+              Проектирование и разработка регионального сервиса опросов
+              <ul class="list-disc list-inside ml-4">
+                <li>
+                  Пользовательский интерфейс, Админ панель с конструктором
+                  опросов (React 17)
+                </li>
+                <li>Микросервис отчетов (NestJS, Redis, RabbitMQ)</li>
+                <li>Деплой (GitLab CI, Docker, Traefik)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </li>
+  </ul>
+</Layout>

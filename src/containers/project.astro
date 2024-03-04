@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+import {
+  CATEGORTY_TO_ICON,
+  CATEGORTY_TO_TITLE,
+  INFRA_TO_ICON,
+  INFRA_TO_TITLE,
+  LANG_TO_ICON,
+  LANG_TO_TITLE,
+  PLATFORM_TO_ICON,
+  PLATFORM_TO_TITLE,
+  STACK_TO_ICON,
+  STACK_TO_TITLE,
+} from "./shared";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<div>
+  <div class="flex gap-2 items-center">
+    <h2 class="text-3xl font-bold grow">
+      {project.data.name}
+    </h2>
+    <a
+      target="_blank"
+      href={project.data.source}
+      class="btn btn-ghost max-lg:btn-sm btn-circle"
+    >
+      <Icon class="size-5" name="lucide:code-2" />
+    </a>
+    {
+      project.data.link && (
+        <a
+          target="_blank"
+          href={project.data.link}
+          class="btn btn-ghost max-lg:btn-sm btn-circle"
+        >
+          <Icon class="size-5" name="lucide:external-link" />
+        </a>
+      )
+    }
+  </div>
+  <div class="flex flex-wrap gap-2 py-3 text-opacity-70">
+    <div class="badge badge-ghost gap-2">
+      <Icon name="lucide:calendar" />
+      {project.data.createdAt.getFullYear()}
+    </div>
+    {
+      project.data.platforms.map((platform) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={PLATFORM_TO_ICON[platform]} />
+          {PLATFORM_TO_TITLE[platform]}
+        </div>
+      ))
+    }
+    <div class="badge badge-ghost gap-2">
+      <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
+      {CATEGORTY_TO_TITLE[project.data.category]}
+    </div>
+    <div class="badge badge-ghost gap-2">
+      <Icon name={LANG_TO_ICON[project.data.lang]} />
+      {LANG_TO_TITLE[project.data.lang]}
+    </div>
+    {
+      project.data.stack?.map((stack) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={STACK_TO_ICON[stack]} />
+          {STACK_TO_TITLE[stack]}
+        </div>
+      ))
+    }
+    {
+      project.data.infra?.map((infra) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={INFRA_TO_ICON[infra]} />
+          {INFRA_TO_TITLE[infra]}
+        </div>
+      ))
+    }
+    {
+      project.data.archived && (
+        <div class="badge badge-ghost gap-2">
+          <Icon name="lucide:archive" />
+          Archived
+        </div>
+      )
+    }
+  </div>
+
+  <div class="prose">
+    <Content />
+  </div>
+</div>
