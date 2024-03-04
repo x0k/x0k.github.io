@@ -3,8 +3,14 @@
 d:
   npm run dev
 
-p:
+f:
   npx prettier --write .
 
 s:
   npx astro sync
+
+b:
+  npx astro build
+
+p:
+  npx astro preview

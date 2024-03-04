@@ -96,7 +96,7 @@ const projects = await getCollection("projects");
         <a target="_blank" href={`mailto:${EMAIL}`}>
           <Icon size={24} name="lucide:mail" />
         </a>
-        <ThemeController transition:persist />
+        <ThemeController />
         <a
           class="font-semibold"
           href={getAbsoluteLocaleUrl(nextLang, currentPage)}
