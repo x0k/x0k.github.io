@@ -6,7 +6,8 @@ name: JSON to Table
 source: https://github.com/x0k/json-to-table
 link: https://x0k.github.io/json-to-table/
 createdAt: 2022-12-28
-lang: typescript
+languages:
+  - typescript
 stack:
   - react
 infra:

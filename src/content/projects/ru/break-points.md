@@ -6,7 +6,8 @@ name: Break Points
 source: https://github.com/x0k/break-points
 link: https://x0k.github.io/break-points/
 createdAt: 2023-09-01
-lang: typescript
+languages:
+  - typescript
 stack:
   - svelte
   - pwa

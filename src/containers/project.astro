@@ -25,16 +25,20 @@ const { Content } = await project.render();
 
 <div>
   <div class="flex gap-2 items-center">
-    <h2 class="text-3xl font-bold grow">
+    <h2 class="text-3xl font-bold">
       {project.data.name}
     </h2>
-    <a
-      target="_blank"
-      href={project.data.source}
-      class="btn btn-ghost max-lg:btn-sm btn-circle"
-    >
-      <Icon class="size-5" name="lucide:code-2" />
-    </a>
+    {
+      project.data.source && (
+        <a
+          target="_blank"
+          href={project.data.source}
+          class="btn btn-ghost max-lg:btn-sm btn-circle"
+        >
+          <Icon class="size-5" name="lucide:code-2" />
+        </a>
+      )
+    }
     {
       project.data.link && (
         <a
@@ -64,10 +68,14 @@ const { Content } = await project.render();
       <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
       {CATEGORTY_TO_TITLE[project.data.category]}
     </div>
-    <div class="badge badge-ghost gap-2">
-      <Icon name={LANG_TO_ICON[project.data.lang]} />
-      {LANG_TO_TITLE[project.data.lang]}
-    </div>
+    {
+      project.data.languages.map((lang) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={LANG_TO_ICON[lang]} />
+          {LANG_TO_TITLE[lang]}
+        </div>
+      ))
+    }
     {
       project.data.stack?.map((stack) => (
         <div class="badge badge-ghost gap-2">

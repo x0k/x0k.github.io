@@ -1,11 +1,8 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-export type Project = CollectionEntry<"projects">["data"] 
+type Project = CollectionEntry<"projects">["data"];
 
-export const CATEGORTY_TO_ICON: Record<
-  Project["category"],
-  string
-> = {
+export const CATEGORTY_TO_ICON: Record<Project["category"], string> = {
   app: "lucide:layout-grid",
   browserExtension: "lucide:chrome",
   cli: "lucide:terminal",
@@ -13,10 +10,7 @@ export const CATEGORTY_TO_ICON: Record<
   game: "lucide:gamepad-2",
 };
 
-export const CATEGORTY_TO_TITLE: Record<
-  Project["category"],
-  string
-> = {
+export const CATEGORTY_TO_TITLE: Record<Project["category"], string> = {
   app: "Application",
   browserExtension: "Browser Extension",
   cli: "CLI",
@@ -24,30 +18,24 @@ export const CATEGORTY_TO_TITLE: Record<
   game: "Game",
 };
 
-export const LANG_TO_ICON: Record<
-  Project["lang"],
-  string
-> = {
+export const LANG_TO_ICON: Record<Project["languages"][number], string> = {
   typescript: "simple-icons:typescript",
   golang: "simple-icons:go",
   delphi: "simple-icons:delphi",
+  dart: "simple-icons:dart",
 };
 
-export const LANG_TO_TITLE: Record<
-  Project["lang"],
-  string
-> = {
+export const LANG_TO_TITLE: Record<Project["languages"][number], string> = {
   typescript: "TypeScript",
   golang: "Go",
   delphi: "Delphi",
+  dart: "Dart",
 };
 
-export const PLATFORM_TO_ICON: Record<
-  Exclude<Project["platforms"], undefined>[number],
-  string
-> = {
+export const PLATFORM_TO_ICON: Record<Project["platforms"][number], string> = {
   web: "lucide:globe",
   desktop: "lucide:monitor",
+  mobile: "lucide:smartphone",
 };
 
 export const PLATFORM_TO_TITLE: Record<
@@ -56,6 +44,7 @@ export const PLATFORM_TO_TITLE: Record<
 > = {
   web: "Web",
   desktop: "Desktop",
+  mobile: "Mobile",
 };
 
 export const STACK_TO_ICON: Record<
@@ -68,6 +57,10 @@ export const STACK_TO_ICON: Record<
   fmx: "simple-icons:embarcadero",
   websocket: "lucide:unplug",
   pwa: "simple-icons:pwa",
+  nestjs: "simple-icons:nestjs",
+  redis: "simple-icons:redis",
+  rabbitmq: "simple-icons:rabbitmq",
+  flutter: "simple-icons:flutter",
 };
 
 export const STACK_TO_TITLE: Record<
@@ -80,6 +73,10 @@ export const STACK_TO_TITLE: Record<
   fmx: "FireMonkey",
   websocket: "WebSockets",
   pwa: "Progressive Web App",
+  nestjs: "NestJS",
+  redis: "Redis",
+  rabbitmq: "RabbitMQ",
+  flutter: "Flutter",
 };
 
 export const INFRA_TO_ICON: Record<
@@ -91,6 +88,8 @@ export const INFRA_TO_ICON: Record<
   vercel: "simple-icons:vercel",
   docker: "simple-icons:docker",
   terraform: "simple-icons:terraform",
+  gitlabci: "simple-icons:gitlab",
+  traefik: "simple-icons:traefikproxy",
 };
 
 export const INFRA_TO_TITLE: Record<
@@ -102,4 +101,6 @@ export const INFRA_TO_TITLE: Record<
   vercel: "Vercel",
   docker: "Docker",
   terraform: "Terraform",
+  gitlabci: "GitLab CI",
+  traefik: "Traefik Proxy",
 };

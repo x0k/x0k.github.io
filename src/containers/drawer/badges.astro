@@ -1,92 +1,21 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
-import { Label, Lang, useTranslations } from "../../i18n";
-
-import {
-  type Project,
-  STACK_TO_ICON,
-  STACK_TO_TITLE,
-  INFRA_TO_ICON,
-  INFRA_TO_TITLE,
-  LANG_TO_TITLE,
-  LANG_TO_ICON,
-} from "../shared";
-
-interface Props {
-  projects: CollectionEntry<"projects">[];
+interface Props<T extends string> {
+  icons: Record<T, string>;
+  titles: Record<T, string>;
+  items: T[];
 }
 
-const lang = Astro.currentLocale as Lang;
-const t = useTranslations(lang);
-const { projects } = Astro.props;
-
-const langs = new Set<Project["lang"]>();
-for (const p of projects) {
-  if (p.data.archived) {
-    continue;
-  }
-  langs.add(p.data.lang);
-}
-
-const stack = new Set<Exclude<Project["stack"], undefined>[number]>();
-for (const p of projects) {
-  if (p.data.archived) {
-    continue;
-  }
-  if (p.data.stack) {
-    for (const s of p.data.stack) {
-      stack.add(s);
-    }
-  }
-}
-
-const infra = new Set<Exclude<Project["infra"], undefined>[number]>();
-for (const p of projects) {
-  if (p.data.archived) {
-    continue;
-  }
-  if (p.data.infra) {
-    for (const i of p.data.infra) {
-      infra.add(i);
-    }
-  }
-}
+const { items, icons, titles } = Astro.props;
 ---
-
-<div class="p-2 flex flex-col gap-2">
-  <p class="font-light">{t(Label.Lang)}</p>
-  <div class="flex flex-wrap gap-2 pb-4">
-    {
-      Array.from(langs).map((l) => (
-        <div class="badge gap-2">
-          <Icon name={LANG_TO_ICON[l]} />
-          {LANG_TO_TITLE[l]}
-        </div>
-      ))
-    }
-  </div>
-  <p class="font-light">{t(Label.Stack)}</p>
-  <div class="flex flex-wrap gap-2 pb-4">
-    {
-      Array.from(stack).map((s) => (
-        <div class="badge gap-2">
-          <Icon name={STACK_TO_ICON[s]} />
-          {STACK_TO_TITLE[s]}
-        </div>
-      ))
-    }
-  </div>
-  <p class="font-light">{t(Label.Infra)}</p>
-  <div class="flex flex-wrap gap-2 pb-4">
-    {
-      Array.from(infra).map((i) => (
-        <div class="badge gap-2">
-          <Icon name={INFRA_TO_ICON[i]} />
-          {INFRA_TO_TITLE[i]}
-        </div>
-      ))
-    }
-  </div>
+<div class="flex flex-wrap gap-2 pb-4">
+  {
+    items.map((item: string) => (
+      <div class="badge gap-2">
+        <Icon name={icons[item]} />
+        {titles[item]}
+      </div>
+    ))
+  }
 </div>

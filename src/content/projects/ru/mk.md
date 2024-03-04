@@ -5,7 +5,8 @@ category: cli
 name: mk
 source: https://github.com/x0k/mk
 createdAt: 2023-10-06
-lang: golang
+languages:
+  - golang
 ---
 Текстовый препроцессор для организации build скриптов.
 

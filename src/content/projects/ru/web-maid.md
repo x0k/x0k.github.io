@@ -5,7 +5,8 @@ category: browserExtension
 name: WebMaid
 source: "https://github.com/x0k/web-maid"
 createdAt: 2023-11-07
-lang: typescript
+languages:
+  - typescript
 stack:
   - react
 ---

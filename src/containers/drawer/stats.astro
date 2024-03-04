@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import { isDefined } from "../../lib/guards";
+import { Label, Lang, useTranslations } from "../../i18n";
+
+import {
+  STACK_TO_ICON,
+  STACK_TO_TITLE,
+  INFRA_TO_ICON,
+  INFRA_TO_TITLE,
+  LANG_TO_TITLE,
+  LANG_TO_ICON,
+} from "../shared";
+
+import Badges from "./badges.astro";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+
+const lang = Astro.currentLocale as Lang;
+const t = useTranslations(lang);
+const { projects } = Astro.props;
+
+const langs = Array.from(
+  new Set(
+    projects
+      .filter((p) => !p.data.archived)
+      .flatMap((p) => p.data.languages)
+      .sort()
+  )
+);
+
+const stack = Array.from(
+  new Set(
+    projects
+      .filter((p) => !p.data.archived)
+      .map((p) => p.data.stack)
+      .filter(isDefined)
+      .flat()
+      .sort()
+  )
+);
+
+const infra = Array.from(
+  new Set(
+    projects
+      .filter((p) => !p.data.archived)
+      .map((p) => p.data.infra)
+      .filter(isDefined)
+      .flat()
+      .sort()
+  )
+);
+---
+
+<div class="p-2 flex flex-col gap-2">
+  <p class="font-light">{t(Label.Lang)}</p>
+  <Badges icons={LANG_TO_ICON} titles={LANG_TO_TITLE} items={langs} />
+  <p class="font-light">{t(Label.Stack)}</p>
+  <Badges icons={STACK_TO_ICON} titles={STACK_TO_TITLE} items={stack} />
+  <p class="font-light">{t(Label.Infra)}</p>
+  <Badges icons={INFRA_TO_ICON} titles={INFRA_TO_TITLE} items={infra} />
+</div>
