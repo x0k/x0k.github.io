@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
 
 const projectSchema = z.object({
-  platforms: z.array(z.enum(["web", "desktop"])).optional(),
+  archived: z.boolean().optional(),
+  platforms: z.array(z.enum(["web", "desktop"])).min(1),
   category: z.enum(["app", "cli", "chatBot", "game", "browserExtension"]),
   name: z.string(),
   source: z.string().url(),
@@ -9,7 +10,7 @@ const projectSchema = z.object({
   createdAt: z.date(),
   lang: z.enum(["typescript", "golang", "delphi"]),
   stack: z
-    .array(z.enum(["svelte", "nextjs", "react", "fmx", "websocket"]))
+    .array(z.enum(["svelte", "nextjs", "react", "fmx", "websocket", "pwa"]))
     .optional(),
   infra: z
     .array(z.enum(["githubPages", "vercel", "notion", "docker", "terraform"]))

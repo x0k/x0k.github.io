@@ -21,7 +21,7 @@ const projects = await getCollection("projects");
   >
     Проекты
   </h1>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-12 pt-12">
     {
       projects
         .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())

@@ -9,7 +9,10 @@ createdAt: 2023-09-01
 lang: typescript
 stack:
   - svelte
+  - pwa
 infra:
   - githubPages
 ---
-App for storing waypoints and projecting them on the map
+Приложение для сохранения и группировки маршрутных точек.
+
+Выбранные сохраненные точки можно отобразить на несколько online-карт.

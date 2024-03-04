@@ -1,4 +1,6 @@
 ---
+platforms:
+  - desktop
 category: chatBot
 name: PlanetSide 2 Spy
 source: https://github.com/x0k/ps2-spy
@@ -11,6 +13,6 @@ infra:
   - docker
   - terraform
 ---
-Simple discord bot for PlanetSide 2 outfits.
+Discord bot для игроков и аутфитов [PlanetSide 2](https://www.planetside2.com).
 
-The main purpose of this bot is to get players involved in outfit activities.
+Основная задача бота - вовлечь игроков в деятельность аутфитов.

@@ -73,6 +73,7 @@ const STACK_TO_ICON: Record<
   nextjs: "simple-icons:nextdotjs",
   fmx: "simple-icons:embarcadero",
   websocket: "lucide:unplug",
+  pwa: "simple-icons:pwa",
 };
 
 const STACK_TO_TITLE: Record<
@@ -84,6 +85,7 @@ const STACK_TO_TITLE: Record<
   nextjs: "Next.js",
   fmx: "FireMonkey",
   websocket: "WebSockets",
+  pwa: "Progressive Web App",
 };
 
 const INFRA_TO_ICON: Record<
@@ -115,15 +117,17 @@ const lang = Astro.currentLocale as Lang;
 const t = useTranslations(lang);
 ---
 
-<div class="rounded-xl shadow-lg p-4">
-  <div class="flex gap-2 items-center py-3">
-    <h2 class="text-3xl font-bold grow">{project.data.name}</h2>
+<div>
+  <div class="flex gap-2 items-center">
+    <h2 class="text-3xl font-bold grow">
+      {project.data.name}
+    </h2>
     <a
       target="_blank"
       href={project.data.source}
       class="btn btn-ghost max-lg:btn-sm btn-circle"
     >
-      <Icon class="size-5" name="lucide:github" />
+      <Icon class="size-5" name="lucide:code-2" />
     </a>
     {
       project.data.link && (
@@ -137,64 +141,54 @@ const t = useTranslations(lang);
       )
     }
   </div>
-  <div class="grid grid-cols-4 pb-6 text-opacity-70">
-    <div class="flex gap-2 items-center">
+  <div class="flex flex-wrap gap-2 py-3 text-opacity-70">
+    <div class="badge badge-ghost gap-2">
+      <Icon name="lucide:calendar" />
+      {project.data.createdAt.getFullYear()}
+    </div>
+    {
+      project.data.platforms.map((platform) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={PLATFORM_TO_ICON[platform]} />
+          {PLATFORM_TO_TITLE[platform]}
+        </div>
+      ))
+    }
+    <div class="badge badge-ghost gap-2">
       <Icon name={CATEGORTY_TO_ICON[project.data.category]} />
       {CATEGORTY_TO_TITLE[project.data.category]}
     </div>
-    <div class="flex gap-2 items-center">
+    <div class="badge badge-ghost gap-2">
       <Icon name={LANG_TO_ICON[project.data.lang]} />
       {LANG_TO_TITLE[project.data.lang]}
     </div>
+    {
+      project.data.stack?.map((stack) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={STACK_TO_ICON[stack]} />
+          {STACK_TO_TITLE[stack]}
+        </div>
+      ))
+    }
+    {
+      project.data.infra?.map((infra) => (
+        <div class="badge badge-ghost gap-2">
+          <Icon name={INFRA_TO_ICON[infra]} />
+          {INFRA_TO_TITLE[infra]}
+        </div>
+      ))
+    }
+    {
+      project.data.archived && (
+        <div class="badge badge-ghost gap-2">
+          <Icon name="lucide:archive" />
+          Archived
+        </div>
+      )
+    }
   </div>
 
-  <Content />
-
-  <div class="grid lg:grid-cols-3 pt-6">
-    {
-      project.data.platforms && (
-        <div>
-          <p class="font-semibold">{t(Label.Platforms)}:</p>
-          <div class="flex gap-6 flex-wrap pt-3">
-            {project.data.platforms.map((platform) => (
-              <div class="flex gap-2 items-center">
-                <Icon name={PLATFORM_TO_ICON[platform]} />
-                {PLATFORM_TO_TITLE[platform]}
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
-    {
-      project.data.stack && (
-        <div>
-          <p class="font-semibold">{t(Label.Stack)}:</p>
-          <div class="flex gap-6 flex-wrap pt-3">
-            {project.data.stack.map((stack) => (
-              <div class="flex gap-2 items-center">
-                <Icon name={STACK_TO_ICON[stack]} />
-                {STACK_TO_TITLE[stack]}
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
-    {
-      project.data.infra && (
-        <div>
-          <p class="font-semibold">{t(Label.Infra)}:</p>
-          <div class="flex gap-6 flex-wrap pt-3">
-            {project.data.infra.map((infra) => (
-              <div class="flex gap-2 items-center">
-                <Icon name={INFRA_TO_ICON[infra]} />
-                {INFRA_TO_TITLE[infra]}
-              </div>
-            ))}
-          </div>
-        </div>
-      )
-    }
+  <div class="prose" >
+    <Content />
   </div>
 </div>
