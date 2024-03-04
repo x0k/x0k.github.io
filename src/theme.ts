@@ -24,6 +24,9 @@ function setTheme(theme: Theme) {
 }
 
 export function syncTheme() {
+  document.addEventListener("astro:after-swap", () =>
+    setTheme(getCurrentTheme())
+  );
   setTheme(getCurrentTheme());
 }
 

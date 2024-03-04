@@ -2,7 +2,7 @@
 
 ---
 
-<div id="theme-controller" class="btn btn-circle btn-sm" >
+<div id="theme-controller" transition:persist class="btn btn-circle btn-sm">
   <svg
     class="dark:block hidden fill-current size-6"
     xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
 </div>
 
 <script>
-  import { syncTheme, toggleTheme } from '../theme'
+  import { syncTheme, toggleTheme } from "../theme";
   syncTheme();
   document
     .getElementById("theme-controller")

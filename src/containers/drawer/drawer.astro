@@ -2,10 +2,12 @@
 import { Icon } from "astro-icon/components";
 import { getAbsoluteLocaleUrl } from "astro:i18n";
 
-import { Page, Lang, getNextLang, EMAIL } from "../shared";
-import { getPageLabel, useTranslations } from "../i18n";
+import { Page, Lang, getNextLang, EMAIL } from "../../shared";
+import { getPageLabel, useTranslations } from "../../i18n";
 
-import ThemeController from "../components/theme-controller.astro";
+import ThemeController from "../../components/theme-controller.astro";
+
+import PrintButton from "./print-button.astro";
 
 interface Props {
   currentPage: Page;
@@ -47,9 +49,7 @@ const t = useTranslations(lang);
         >
       </div>
       <div class="navbar-end">
-        <button id="print-button" class="btn btn-square btn-ghost stroke-current">
-          <Icon class="size-6" name="lucide:printer" />
-        </button>
+        <PrintButton />
       </div>
     </div>
     <!-- Page content -->
@@ -68,7 +68,7 @@ const t = useTranslations(lang);
           </div>
         </div>
       </div>
-      <ul class="menu grow shrink menu-md overflow-y-auto">
+      <ul class="menu grow shrink menu-md overflow-y-auto max-lg:mt-16">
         {
           Object.values(Page).map((page) => (
             <li>
@@ -99,7 +99,3 @@ const t = useTranslations(lang);
   </div>
 </div>
 
-<script>
-  const printBtn = document.getElementById('print-button')
-  printBtn?.addEventListener('click', () => window.print())
-</script>
