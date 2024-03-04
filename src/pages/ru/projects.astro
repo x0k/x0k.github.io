@@ -2,16 +2,10 @@
 import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/landing.astro";
-
 import { Page } from "../../shared";
-import { Lang, useTranslations } from "../../i18n";
-
 import Project from "../../containers/project.astro";
 
 const currentPage = Page.Projects;
-const lang = Astro.currentLocale as Lang;
-const t = useTranslations(lang);
-
 const projects = await getCollection("projects");
 ---
 
