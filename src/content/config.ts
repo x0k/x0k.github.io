@@ -22,6 +22,7 @@ const projectSchema = z.object({
         "redis",
         "rabbitmq",
         "flutter",
+        "telegram",
       ])
     )
     .optional(),

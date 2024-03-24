@@ -61,6 +61,7 @@ export const STACK_TO_ICON: Record<
   redis: "simple-icons:redis",
   rabbitmq: "simple-icons:rabbitmq",
   flutter: "simple-icons:flutter",
+  telegram: "simple-icons:telegram",
 };
 
 export const STACK_TO_TITLE: Record<
@@ -77,6 +78,7 @@ export const STACK_TO_TITLE: Record<
   redis: "Redis",
   rabbitmq: "RabbitMQ",
   flutter: "Flutter",
+  telegram: "Telegram Bot",
 };
 
 export const INFRA_TO_ICON: Record<
