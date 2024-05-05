@@ -3,14 +3,8 @@ import { Icon } from "astro-icon/components";
 ---
 
 <button
-  id="print-button"
-  transition:persist
   class="btn btn-circle btn-ghost stroke-current"
+  onclick="window.print()"
 >
   <Icon class="size-6" name="lucide:printer" />
 </button>
-
-<script>
-  const printBtn = document.getElementById("print-button");
-  printBtn?.addEventListener("click", () => window.print());
-</script>
