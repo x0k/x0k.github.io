@@ -13,9 +13,10 @@ const lang = Astro.currentLocale as Lang;
 ---
 
 <Layout currentPage={currentPage}>
-  <h1 class="text-5xl text-opacity-50 text-base-content font-bold">
+  <h1 class="text-5xl text-opacity-50 text-base-content font-bold pb-4">
     Красильников Роман Борисович
   </h1>
+  <p class="font-light">Web-разработчик c опытом 4+ лет.</p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
     <div>
@@ -42,16 +43,15 @@ const lang = Astro.currentLocale as Lang;
 
   <h2 class="text-3xl py-3 pt-12 font-bold">О себе</h2>
 
-  <p>
-    Web-разработчик c опытом 4+ лет. В основном занимался разработкой и
-    поддержкой фронтенд приложений (Typescript, React). Имею опыт разработки
-    бэкенд (NestJS), настольных (Electron) и фуллстек (SvelteKit) приложений,
-    расширений для браузеров.
+  <p class="pb-2">
+    В основном занимался разработкой и поддержкой фронтенд приложений
+    (Typescript, React). Имею опыт разработки бэкенд (NestJS), настольных
+    (Electron) и фуллстек (SvelteKit) приложений, расширений для браузеров.
   </p>
 
   <p>
     Хочу развиваться как бэкенд разработчик, для чего занимаюсь разработкой
-    своих проектов (CLI, Chat Bot) на языке Golang.
+    своих проектов на языке Golang.
   </p>
 
   <p class="text-3xl py-3 pt-12 font-bold">Опыт</p>
@@ -67,7 +67,7 @@ const lang = Astro.currentLocale as Lang;
         <ul class="list-disc list-inside">
           <li>
             Настроил инфраструктуру для разработки собственных проектов (Docker,
-            Ansible, Terraform)
+            Ansible, OpenTofu)
           </li>
           <li>
             Настроил мониторинг инфраструктуры и проектов (Grafana, Prometheus,
@@ -77,7 +77,8 @@ const lang = Astro.currentLocale as Lang;
             Разработал:
             <ul class="list-disc list-inside ml-4">
               <li>
-                Приложениe, телеграм бот для записи на прием в вет-клинику (Next.js, Golang)
+                Приложениe, телеграм бот для записи на прием в вет-клинику
+                (Next.js, Golang)
               </li>
               <li>
                 Приложение для представления любых JSON-данных в табличном виде
