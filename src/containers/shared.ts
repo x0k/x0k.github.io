@@ -89,7 +89,7 @@ export const INFRA_TO_ICON: Record<
   notion: "simple-icons:notion",
   vercel: "simple-icons:vercel",
   docker: "simple-icons:docker",
-  terraform: "simple-icons:terraform",
+  opentofu: "simple-icons:opentofu",
   gitlabci: "simple-icons:gitlab",
   traefik: "simple-icons:traefikproxy",
 };
@@ -102,7 +102,7 @@ export const INFRA_TO_TITLE: Record<
   notion: "Notion",
   vercel: "Vercel",
   docker: "Docker",
-  terraform: "Terraform",
+  opentofu: "OpenTofu",
   gitlabci: "GitLab CI",
   traefik: "Traefik Proxy",
 };

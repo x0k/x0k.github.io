@@ -12,7 +12,7 @@ stack:
   - websocket
 infra:
   - docker
-  - terraform
+  - opentofu
 ---
 Discord bot для игроков и аутфитов [PlanetSide 2](https://www.planetside2.com).
 

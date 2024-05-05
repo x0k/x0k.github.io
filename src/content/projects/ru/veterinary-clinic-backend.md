@@ -12,7 +12,7 @@ stack:
   - telegram
 infra:
   - docker
-  - terraform
+  - opentofu
   - notion
 ---
 Бэкенд для сервиса онлайн-записи на прием в ветеринарную клинику.

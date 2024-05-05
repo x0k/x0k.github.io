@@ -33,7 +33,7 @@ const projectSchema = z.object({
         "vercel",
         "notion",
         "docker",
-        "terraform",
+        "opentofu",
         "gitlabci",
         "traefik",
       ])
