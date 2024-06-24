@@ -23,6 +23,7 @@ export const LANG_TO_ICON: Record<Project["languages"][number], string> = {
   golang: "simple-icons:go",
   delphi: "simple-icons:delphi",
   dart: "simple-icons:dart",
+  rust: "simple-icons:rust",
 };
 
 export const LANG_TO_TITLE: Record<Project["languages"][number], string> = {
@@ -30,6 +31,7 @@ export const LANG_TO_TITLE: Record<Project["languages"][number], string> = {
   golang: "Go",
   delphi: "Delphi",
   dart: "Dart",
+  rust: "Rust",
 };
 
 export const PLATFORM_TO_ICON: Record<Project["platforms"][number], string> = {

@@ -8,7 +8,7 @@ const projectSchema = z.object({
   source: z.string().url().optional(),
   link: z.string().url().optional(),
   createdAt: z.date(),
-  languages: z.array(z.enum(["typescript", "golang", "delphi", "dart"])).min(1),
+  languages: z.array(z.enum(["typescript", "golang", "delphi", "dart", "rust"])).min(1),
   stack: z
     .array(
       z.enum([
