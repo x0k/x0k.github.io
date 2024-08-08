@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 import { Page, EMAIL } from "../../shared";
@@ -79,7 +79,7 @@ const projects = await getCollection("projects");
             <li>
               <a
                 class="text-base data-[active]:bg-base-300 py-3"
-                href={getAbsoluteLocaleUrl(lang, page)}
+                href={getRelativeLocaleUrl(lang, page)}
                 data-active={page === currentPage}
               >
                 {t(getPageLabel(page))}
@@ -101,7 +101,7 @@ const projects = await getCollection("projects");
         <ThemeController />
         <a
           class="font-semibold"
-          href={getAbsoluteLocaleUrl(nextLang, currentPage)}
+          href={getRelativeLocaleUrl(nextLang, currentPage)}
         >
           {lang.toLocaleUpperCase()}
         </a>
