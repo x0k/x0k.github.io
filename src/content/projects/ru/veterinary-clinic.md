@@ -10,6 +10,7 @@ languages:
   - typescript
 stack:
   - nextjs
+  - webassembly
 infra:
   - vercel
   - notion

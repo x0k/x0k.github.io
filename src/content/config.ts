@@ -23,6 +23,7 @@ const projectSchema = z.object({
         "rabbitmq",
         "flutter",
         "telegram",
+        "webassembly",
       ])
     )
     .optional(),

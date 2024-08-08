@@ -64,6 +64,7 @@ export const STACK_TO_ICON: Record<
   rabbitmq: "simple-icons:rabbitmq",
   flutter: "simple-icons:flutter",
   telegram: "simple-icons:telegram",
+  webassembly: "simple-icons:webassembly",
 };
 
 export const STACK_TO_TITLE: Record<
@@ -81,6 +82,7 @@ export const STACK_TO_TITLE: Record<
   rabbitmq: "RabbitMQ",
   flutter: "Flutter",
   telegram: "Telegram Bot",
+  webassembly: "WebAssembly",
 };
 
 export const INFRA_TO_ICON: Record<

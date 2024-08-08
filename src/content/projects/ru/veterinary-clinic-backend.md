@@ -10,6 +10,7 @@ languages:
   - golang
 stack:
   - telegram
+  - webassembly
 infra:
   - docker
   - opentofu
