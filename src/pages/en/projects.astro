@@ -14,9 +14,9 @@ const projects = await getCollection("projects", (e) => e.slug.startsWith(lang))
 
 <Layout currentPage={currentPage}>
   <Hero class="max-lg:hidden print:!block print:mb-6">
-    <Fragment slot="title"> Проекты </Fragment>
+    <Fragment slot="title"> Projects </Fragment>
     <Fragment slot="subtitle">
-      С открытым исходным кодом и/или с публичным доступом
+      With open source and/or public access
     </Fragment>
   </Hero>
   {

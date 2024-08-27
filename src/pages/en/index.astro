@@ -1,0 +1,151 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Icon } from "astro-icon/components";
+
+import { BIRTHDAY, EMAIL, GITHUB_LINK, Page } from "@/shared";
+import { getYearsSinceDate } from "@/lib/date";
+import type { Lang } from "@/i18n";
+import Hero from "@/components/hero.astro";
+import ContentBlock from "@/components/content-block.astro";
+import Landing from "@/layouts/landing.astro";
+
+const currentPage = Page.Resume;
+const lang = Astro.currentLocale as Lang;
+---
+
+<Landing currentPage={currentPage}>
+  <Hero>
+    <Fragment slot="title"> Roman Krasilnikov </Fragment>
+    <Fragment slot="subtitle">
+      Web developer with 4+ years of experience
+    </Fragment>
+  </Hero>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-20 print:gap-8">
+    <ContentBlock title="General information">
+      <p>
+        Email: <a class="link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      </p>
+      <p>
+        GitHub: <a class="link" href={GITHUB_LINK}>x0k</a>
+      </p>
+      <p>Age: {getYearsSinceDate(BIRTHDAY)}</p>
+    </ContentBlock>
+    <ContentBlock title="Education">
+      <p>Institution: Pitirim Sorokin Syktyvkar State University</p>
+      <p>Major: Applied Informatics</p>
+      <p>Period: 2015 - 2021</p>
+    </ContentBlock>
+  </div>
+  <ContentBlock title="About Me">
+    <p class="mb-5">
+      Primarily focused on developing and maintaining frontend applications
+      (Typescript, React). I have experience in backend development (NestJS),
+      desktop (Electron), full-stack (SvelteKit) applications, and browser
+      extensions.
+    </p>
+    <p>
+      I aim to grow as a backend developer, and I'm working on open-source
+      projects (Golang, Rust) to achieve this.
+    </p>
+  </ContentBlock>
+  <ContentBlock title="Experience">
+    <ul class="timeline-compact timeline timeline-snap-icon timeline-vertical">
+      <li>
+        <div class="timeline-middle">
+          <Icon name="lucide:github" class="h-5 w-5" />
+        </div>
+        <div class="timeline-end mb-10">
+          <time class="font-mono italic">December 2022 - Present</time>
+          <div class="text-lg font-black">Open Source Developer</div>
+          Implementing my own projects, exploring new technologies:
+          <ul class="list-disc list-inside">
+            <li>
+              Set up infrastructure for developing personal projects (Docker,
+              Ansible, OpenTofu)
+            </li>
+            <li>
+              Set up infrastructure and project monitoring (Grafana, Prometheus,
+              Loki)
+            </li>
+            <li>
+              Developed:
+              <ul class="list-disc list-inside ml-4">
+                <li>
+                  Application and Telegram bot for scheduling appointments at a
+                  vet clinic (Next.js, Golang)
+                </li>
+                <li>
+                  Application for representing any JSON data in a tabular format
+                  (Typescript, React)
+                </li>
+                <li>Text preprocessor for organizing build scripts (Rust)</li>
+                <li>
+                  Browser extension for executing scripts in the browser
+                  (Typescript, React)
+                </li>
+                <li>
+                  Discord bot for real-time game statistics tracking (Golang)
+                </li>
+                <li>
+                  <a
+                    class="link"
+                    href={getRelativeLocaleUrl(lang, Page.Projects)}
+                    >Learn more...</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <hr />
+      </li>
+      <li>
+        <hr />
+        <div class="timeline-middle">
+          <Icon name="lucide:star" class="h-5 w-5" />
+        </div>
+        <div class="timeline-end mb-10">
+          <time class="font-mono italic">December 2021 - December 2022</time>
+          <div class="text-lg font-black">Military Service</div>
+          Completed several projects (Electron, Excel VBA) and found time to read
+          professional literature.
+        </div>
+        <hr />
+      </li>
+      <li>
+        <hr />
+        <div class="timeline-middle">
+          <Icon name="lucide:circle-dollar-sign" class="h-5 w-5" />
+        </div>
+        <div class="timeline-end mb-10">
+          <time class="font-mono italic">February 2019 - December 2021</time>
+          <div class="text-lg font-black">
+            Web Developer at State Autonomous Institution of the Komi Republic
+            “Center for Information Technologies”
+          </div>
+          Projects and responsibilities:
+          <ul class="list-disc list-inside">
+            <li>Support for regional projects: "MFC", "SOOZ" (React 15)</li>
+            <li>
+              Development of internal services: request management, electronic
+              signature registry (React 16)
+            </li>
+            <li>
+              Development of media monitoring analytics system (Vue.js, NestJS)
+            </li>
+            <li>
+              Design and development of a regional survey service
+              <ul class="list-disc list-inside ml-4">
+                <li>
+                  User interface, Admin panel with survey builder (React 17)
+                </li>
+                <li>Report microservice (NestJS, Redis, RabbitMQ)</li>
+                <li>Deployment (GitLab CI, Docker, Traefik)</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </ContentBlock>
+</Landing>

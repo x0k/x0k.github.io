@@ -1,0 +1,15 @@
+---
+import Subtitle from "./subtitle.astro";
+
+export interface Props {
+  title: string;
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<div class={className}>
+  <Subtitle class="pb-3">{title}</Subtitle>
+  <slot />
+</div>

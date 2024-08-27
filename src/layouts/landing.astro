@@ -1,10 +1,9 @@
 ---
-import Content from "../components/content.astro";
+import { Page } from '@/shared';
 
-import Layout from "../containers/root.astro";
-import Drawer from "../containers/drawer/drawer.astro";
-
-import { Page } from '../shared';
+import Content from "@/components/content.astro";
+import Layout from "@/containers/root.astro";
+import Drawer from "@/containers/drawer/drawer.astro";
 
 interface Props {
   currentPage: Page;
@@ -15,7 +14,9 @@ const { currentPage } = Astro.props
 <Layout currentPage={currentPage}>
   <Drawer currentPage={currentPage}>
     <Content>
-      <slot />
+      <div class="flex flex-col gap-20 print:gap-6 mb-20">
+        <slot />
+      </div>
     </Content>
   </Drawer>
 </Layout>
