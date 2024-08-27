@@ -18,8 +18,8 @@
         default = pkgs.mkShell {
           buildInputs = [
             mk.packages.${system}.default
-            # pkgs.nodejs
-            pkgs.bun
+            pkgs.nodejs
+            # pkgs.bun
           ];
         };
       };

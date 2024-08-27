@@ -1,19 +1,19 @@
 #!/usr/bin/bash -xe
 
 d:
-  bun run dev
+  npm run dev
 
 c:
-  bunx astro check
+  npx astro check
 
 f:
-  bunx prettier --write .
+  npx prettier --write .
 
 s:
-  bunx astro sync
+  npx astro sync
 
 b:
-  bunx astro build
+  npx astro build
 
 p:
-  bunx astro preview
+  npx astro preview
