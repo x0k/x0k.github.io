@@ -14,7 +14,7 @@ const { currentPage } = Astro.props
 <Layout currentPage={currentPage}>
   <Drawer currentPage={currentPage}>
     <Content>
-      <div class="flex flex-col gap-20 print:gap-6 mb-20">
+      <div class="flex flex-col gap-20 print:gap-6 mb-20 print:mb-0">
         <slot />
       </div>
     </Content>
