@@ -65,6 +65,7 @@ export const STACK_TO_ICON: Record<
   flutter: "simple-icons:flutter",
   telegram: "simple-icons:telegram",
   webassembly: "simple-icons:webassembly",
+  astro: "simple-icons:astro",
 };
 
 export const STACK_TO_TITLE: Record<
@@ -83,6 +84,7 @@ export const STACK_TO_TITLE: Record<
   flutter: "Flutter",
   telegram: "Telegram Bot",
   webassembly: "WebAssembly",
+  astro: "Astro",
 };
 
 export const INFRA_TO_ICON: Record<

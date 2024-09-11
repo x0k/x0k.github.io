@@ -24,6 +24,7 @@ const projectSchema = z.object({
         "flutter",
         "telegram",
         "webassembly",
+        "astro"
       ])
     )
     .optional(),

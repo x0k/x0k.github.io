@@ -9,8 +9,11 @@ createdAt: 2024-05-20
 languages:
   - typescript
 stack:
+  - astro
   - svelte
   - webassembly
+infra:
+  - githubPages
 ---
 
 Online editor with code execution in the browser.
