@@ -19,7 +19,6 @@
           buildInputs = [
             mk.packages.${system}.default
             pkgs.nodejs
-            # pkgs.bun
           ];
         };
       };
