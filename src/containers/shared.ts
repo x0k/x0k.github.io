@@ -60,8 +60,6 @@ export const STACK_TO_ICON: Record<
   websocket: "lucide:unplug",
   pwa: "simple-icons:pwa",
   nestjs: "simple-icons:nestjs",
-  redis: "simple-icons:redis",
-  rabbitmq: "simple-icons:rabbitmq",
   flutter: "simple-icons:flutter",
   telegram: "simple-icons:telegram",
   webassembly: "simple-icons:webassembly",
@@ -79,8 +77,6 @@ export const STACK_TO_TITLE: Record<
   websocket: "WebSockets",
   pwa: "Progressive Web App",
   nestjs: "NestJS",
-  redis: "Redis",
-  rabbitmq: "RabbitMQ",
   flutter: "Flutter",
   telegram: "Telegram Bot",
   webassembly: "WebAssembly",
@@ -91,6 +87,8 @@ export const INFRA_TO_ICON: Record<
   Exclude<Project["infra"], undefined>[number],
   string
 > = {
+  redis: "simple-icons:redis",
+  rabbitmq: "simple-icons:rabbitmq",
   githubPages: "simple-icons:github",
   notion: "simple-icons:notion",
   vercel: "simple-icons:vercel",
@@ -98,12 +96,15 @@ export const INFRA_TO_ICON: Record<
   opentofu: "simple-icons:opentofu",
   gitlabci: "simple-icons:gitlab",
   traefik: "simple-icons:traefikproxy",
+  nix: "simple-icons:nixos",
 };
 
 export const INFRA_TO_TITLE: Record<
   Exclude<Project["infra"], undefined>[number],
   string
 > = {
+  redis: "Redis",
+  rabbitmq: "RabbitMQ",
   githubPages: "GitHub Pages",
   notion: "Notion",
   vercel: "Vercel",
@@ -111,4 +112,5 @@ export const INFRA_TO_TITLE: Record<
   opentofu: "OpenTofu",
   gitlabci: "GitLab CI",
   traefik: "Traefik Proxy",
+  nix: "Nix"
 };

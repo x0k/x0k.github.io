@@ -14,6 +14,7 @@ stack:
   - webassembly
 infra:
   - githubPages
+  - nix
 ---
 
 Online editor with code execution in the browser.

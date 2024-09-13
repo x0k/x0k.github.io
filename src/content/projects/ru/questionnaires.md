@@ -11,9 +11,9 @@ languages:
 stack:
   - react
   - nestjs
+infra:
   - redis
   - rabbitmq
-infra:
   - gitlabci
   - docker
   - traefik

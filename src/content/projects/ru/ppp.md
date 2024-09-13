@@ -14,6 +14,7 @@ stack:
   - webassembly
 infra:
   - githubPages
+  - nix
 ---
 
 Онлайн редактор с запуском кода в браузере.

@@ -19,18 +19,18 @@ const projectSchema = z.object({
         "websocket",
         "pwa",
         "nestjs",
-        "redis",
-        "rabbitmq",
         "flutter",
         "telegram",
         "webassembly",
-        "astro"
+        "astro",
       ])
     )
     .optional(),
   infra: z
-    .array(
-      z.enum([
+  .array(
+    z.enum([
+        "redis",
+        "rabbitmq",
         "githubPages",
         "vercel",
         "notion",
@@ -38,6 +38,7 @@ const projectSchema = z.object({
         "opentofu",
         "gitlabci",
         "traefik",
+        "nix"
       ])
     )
     .optional(),
