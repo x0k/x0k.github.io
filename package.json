@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.15.4",
+    "@astrojs/tailwind": "^5.1.1",
+    "astro": "^4.15.8",
     "astro-icon": "^1.1.1",
-    "tailwindcss": "^3.4.10",
+    "tailwindcss": "^3.4.12",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.2",
+    "@iconify-json/lucide": "^1.2.4",
+    "@iconify-json/simple-icons": "^1.2.3",
     "@tailwindcss/typography": "^0.5.15",
     "daisyui": "^4.12.10",
     "prettier": "^3.3.3",
