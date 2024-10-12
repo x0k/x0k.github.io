@@ -4,7 +4,14 @@ import { glob } from "astro/loaders";
 const projectSchema = z.object({
   archived: z.boolean().optional(),
   platforms: z.array(z.enum(["web", "desktop", "mobile"])).min(1),
-  category: z.enum(["app", "cli", "chatBot", "game", "browserExtension"]),
+  category: z.enum([
+    "app",
+    "cli",
+    "chatBot",
+    "game",
+    "browserExtension",
+    "package",
+  ]),
   name: z.string(),
   source: z.string().url().optional(),
   link: z.string().url().optional(),
@@ -42,6 +49,7 @@ const projectSchema = z.object({
         "gitlabci",
         "traefik",
         "nix",
+        "npm",
       ])
     )
     .optional(),

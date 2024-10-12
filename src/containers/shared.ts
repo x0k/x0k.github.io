@@ -8,6 +8,7 @@ export const CATEGORTY_TO_ICON: Record<Project["category"], string> = {
   cli: "lucide:terminal",
   chatBot: "lucide:bot-message-square",
   game: "lucide:gamepad-2",
+  package: "lucide:package",
 };
 
 export const CATEGORTY_TO_TITLE: Record<Project["category"], string> = {
@@ -16,6 +17,7 @@ export const CATEGORTY_TO_TITLE: Record<Project["category"], string> = {
   cli: "CLI",
   chatBot: "Chat Bot",
   game: "Game",
+  package: "Package",
 };
 
 export const LANG_TO_ICON: Record<Project["languages"][number], string> = {
@@ -97,6 +99,7 @@ export const INFRA_TO_ICON: Record<
   gitlabci: "simple-icons:gitlab",
   traefik: "simple-icons:traefikproxy",
   nix: "simple-icons:nixos",
+  npm: "simple-icons:npm",
 };
 
 export const INFRA_TO_TITLE: Record<
@@ -112,5 +115,6 @@ export const INFRA_TO_TITLE: Record<
   opentofu: "OpenTofu",
   gitlabci: "GitLab CI",
   traefik: "Traefik Proxy",
-  nix: "Nix"
+  nix: "Nix",
+  npm: "NPM",
 };
