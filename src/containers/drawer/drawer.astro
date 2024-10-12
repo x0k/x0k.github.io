@@ -78,7 +78,7 @@ const projects = await getCollection("projects");
           Object.values(Page).map((page) => (
             <li>
               <a
-                class="text-base data-[active]:bg-base-300 py-3"
+                class="text-base data-[active=true]:bg-base-300 py-3"
                 href={getRelativeLocaleUrl(lang, page)}
                 data-active={page === currentPage}
               >

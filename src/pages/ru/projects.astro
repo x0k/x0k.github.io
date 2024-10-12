@@ -9,7 +9,7 @@ import Layout from "@/layouts/landing.astro";
 
 const currentPage = Page.Projects;
 const lang = Astro.currentLocale as Lang;
-const projects = await getCollection("projects", (e) => e.slug.startsWith(lang));
+const projects = await getCollection("projects", (e) => e.id.startsWith(lang));
 ---
 
 <Layout currentPage={currentPage}>

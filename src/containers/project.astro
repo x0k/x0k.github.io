@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry, render } from "astro:content";
 
 import {
   CATEGORTY_TO_ICON,
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project)
 ---
 
 <div>

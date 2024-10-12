@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const projectSchema = z.object({
   archived: z.boolean().optional(),
@@ -8,7 +9,9 @@ const projectSchema = z.object({
   source: z.string().url().optional(),
   link: z.string().url().optional(),
   createdAt: z.date(),
-  languages: z.array(z.enum(["typescript", "golang", "delphi", "dart", "rust"])).min(1),
+  languages: z
+    .array(z.enum(["typescript", "golang", "delphi", "dart", "rust"]))
+    .min(1),
   stack: z
     .array(
       z.enum([
@@ -27,8 +30,8 @@ const projectSchema = z.object({
     )
     .optional(),
   infra: z
-  .array(
-    z.enum([
+    .array(
+      z.enum([
         "redis",
         "rabbitmq",
         "githubPages",
@@ -38,7 +41,7 @@ const projectSchema = z.object({
         "opentofu",
         "gitlabci",
         "traefik",
-        "nix"
+        "nix",
       ])
     )
     .optional(),
@@ -47,7 +50,7 @@ const projectSchema = z.object({
 export type ProjectSchema = z.infer<typeof projectSchema>;
 
 const projectCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/data/projects" }),
   schema: projectSchema,
 });
 
