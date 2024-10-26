@@ -2,14 +2,14 @@
 platforms:
   - web
 category: app
-name: JSON to Table
-source: https://github.com/x0k/json-to-table
-link: https://x0k.github.io/json-to-table/
+name: JSON Table
+source: https://github.com/x0k/json-table
+link: https://x0k.github.io/json-table/
 createdAt: 2022-12-28
 languages:
   - typescript
 stack:
-  - react
+  - svelte
 infra:
   - githubPages
 ---
