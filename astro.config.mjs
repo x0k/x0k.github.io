@@ -1,12 +1,20 @@
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import paraglide from "@inlang/paraglide-astro";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://x0k.online",
-  integrations: [tailwind(), icon()],
+  integrations: [
+    tailwind(),
+    icon(),
+    paraglide({
+      project: "./project.inlang",
+      outdir: "./src/paraglide",
+    }),
+  ],
   i18n: {
     defaultLocale: "ru",
     locales: ["ru", "en"],

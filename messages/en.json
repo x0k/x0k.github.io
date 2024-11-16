@@ -1,0 +1,9 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "fullName": "R.B. Krasilnikov",
+    "resumePageTitle": "VC",
+    "projectsPageTitle": "Projects",
+    "programmingLanguages": "Languages",
+    "technologyStacks": "Technologies",
+    "infrastructure": "Infrastructure"
+}

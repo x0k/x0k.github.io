@@ -4,13 +4,12 @@ import { Icon } from "astro-icon/components";
 
 import { BIRTHDAY, EMAIL, GITHUB_LINK, Page } from "@/shared";
 import { getYearsSinceDate } from "@/lib/date";
-import type { Lang } from "@/i18n";
 import Hero from "@/components/hero.astro";
 import ContentBlock from "@/components/content-block.astro";
 import Landing from "@/layouts/landing.astro";
+import { languageTag } from '@/paraglide/runtime';
 
 const currentPage = Page.Resume;
-const lang = Astro.currentLocale as Lang;
 ---
 
 <Landing currentPage={currentPage}>
@@ -89,7 +88,7 @@ const lang = Astro.currentLocale as Lang;
                 <li>
                   <a
                     class="link"
-                    href={getRelativeLocaleUrl(lang, Page.Projects)}
+                    href={getRelativeLocaleUrl(languageTag(), Page.Projects)}
                     >Learn more...</a
                   >
                 </li>

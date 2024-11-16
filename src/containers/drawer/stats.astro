@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-import { isDefined } from "../../lib/guards";
-import { Label, Lang, useTranslations } from "../../i18n";
+import { isDefined } from "@/lib/guards";
+import * as m from '@/paraglide/messages'
 
 import {
   STACK_TO_ICON,
@@ -19,8 +19,6 @@ interface Props {
   projects: CollectionEntry<"projects">[];
 }
 
-const lang = Astro.currentLocale as Lang;
-const t = useTranslations(lang);
 const { projects } = Astro.props;
 
 const langs = Array.from(
@@ -56,10 +54,10 @@ const infra = Array.from(
 ---
 
 <div class="p-2 flex flex-col gap-2">
-  <p class="font-light">{t(Label.Lang)}</p>
+  <p class="font-light">{m.programmingLanguages()}</p>
   <Badges icons={LANG_TO_ICON} titles={LANG_TO_TITLE} items={langs} />
-  <p class="font-light">{t(Label.Stack)}</p>
+  <p class="font-light">{m.technologyStacks()}</p>
   <Badges icons={STACK_TO_ICON} titles={STACK_TO_TITLE} items={stack} />
-  <p class="font-light">{t(Label.Infra)}</p>
+  <p class="font-light">{m.infrastructure()}</p>
   <Badges icons={INFRA_TO_ICON} titles={INFRA_TO_TITLE} items={infra} />
 </div>

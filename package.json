@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "paraglide-compile": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
+    "build": "npm run paraglide-compile && astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "npm run paraglide-compile"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -20,6 +22,8 @@
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.15",
     "@iconify-json/simple-icons": "^1.2.11",
+    "@inlang/paraglide-astro": "^0.2.2",
+    "@inlang/paraglide-js": "1.11.3",
     "@tailwindcss/typography": "^0.5.15",
     "daisyui": "^4.12.14",
     "prettier": "^3.3.3",

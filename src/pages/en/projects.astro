@@ -2,14 +2,13 @@
 import { getCollection } from "astro:content";
 
 import { Page } from "@/shared";
-import type { Lang } from '@/i18n';
 import Hero from "@/components/hero.astro";
 import Project from "@/containers/project.astro";
 import Layout from "@/layouts/landing.astro";
+import { languageTag } from '@/paraglide/runtime';
 
 const currentPage = Page.Projects;
-const lang = Astro.currentLocale as Lang;
-const projects = await getCollection("projects", (e) => e.id.startsWith(lang));
+const projects = await getCollection("projects", (e) => e.id.startsWith(languageTag()));
 ---
 
 <Layout currentPage={currentPage}>

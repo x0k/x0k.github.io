@@ -17,3 +17,7 @@ b:
 
 p:
   npx astro preview
+
+# paraglide-compile
+pc:
+  npm run paraglide-compile

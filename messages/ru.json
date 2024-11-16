@@ -1,0 +1,9 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "fullName": "Красильников Р.Б.",
+    "resumePageTitle": "Резюме",
+    "projectsPageTitle": "Проекты",
+    "programmingLanguages": "Языки",
+    "technologyStacks": "Технологии",
+    "infrastructure": "Инфраструктура"
+}

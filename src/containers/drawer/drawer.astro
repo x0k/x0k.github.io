@@ -3,10 +3,10 @@ import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
-import { Page, EMAIL, GITHUB_LINK } from "../../shared";
-import { Lang, getNextLang, getPageLabel, useTranslations } from "../../i18n";
-
-import ThemeController from "../../components/theme-controller.astro";
+import { Page, EMAIL, GITHUB_LINK } from "@/shared";
+import ThemeController from "@/components/theme-controller.astro";
+import { languageTag } from '@/paraglide/runtime';
+import { NEXT_LANG, PAGE_TITLES } from '@/i18n';
 
 import Stats from "./stats.astro";
 import PrintButton from "./print-button.astro";
@@ -16,10 +16,9 @@ interface Props {
 }
 
 const { currentPage } = Astro.props;
-const lang = Astro.currentLocale as Lang;
-const nextLang = getNextLang(lang);
-const t = useTranslations(lang);
+
 const projects = await getCollection("projects");
+const nextLang = NEXT_LANG[languageTag()];
 ---
 
 <div class="drawer bg-base-100 lg:drawer-open">
@@ -50,7 +49,7 @@ const projects = await getCollection("projects");
       </div>
       <div class="navbar-center">
         <span class="text-lg font-bold lg:hidden"
-          >{t(getPageLabel(currentPage))}</span
+          >{PAGE_TITLES[currentPage]()}</span
         >
       </div>
       <div class="navbar-end">
@@ -79,10 +78,10 @@ const projects = await getCollection("projects");
             <li>
               <a
                 class="text-base data-[active=true]:bg-base-300 py-3"
-                href={getRelativeLocaleUrl(lang, page)}
+                href={getRelativeLocaleUrl(languageTag(), page)}
                 data-active={page === currentPage}
               >
-                {t(getPageLabel(page))}
+                {PAGE_TITLES[page]()}
               </a>
             </li>
           ))
@@ -103,7 +102,7 @@ const projects = await getCollection("projects");
           class="font-semibold"
           href={getRelativeLocaleUrl(nextLang, currentPage)}
         >
-          {lang.toLocaleUpperCase()}
+          {languageTag().toLocaleUpperCase()}
         </a>
       </div>
     </aside>
