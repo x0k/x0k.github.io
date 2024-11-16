@@ -1,4 +1,5 @@
 ---
+archived: true
 platforms:
   - web
 category: app
