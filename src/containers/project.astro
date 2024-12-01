@@ -17,10 +17,11 @@ import {
 
 interface Props {
   project: CollectionEntry<"projects">;
+  stars?: number;
 }
 
-const { project } = Astro.props;
-const { Content } = await render(project)
+const { project, stars } = Astro.props;
+const { Content } = await render(project);
 ---
 
 <div>
@@ -98,6 +99,14 @@ const { Content } = await render(project)
           <Icon name="lucide:archive" />
           Archived
         </div>
+      )
+    }
+    {
+      Boolean(stars) && (
+        <a target="_blank" href={`${project.data.source}/stargazers`} class="badge badge-ghost gap-2">
+          <Icon name="lucide:star" />
+          {stars}
+        </a>
       )
     }
   </div>

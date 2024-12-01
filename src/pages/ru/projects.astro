@@ -1,14 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 
-import { Page } from "@/shared";
+import { getReposStarts } from "@/lib/github";
+import { github, Page } from "@/shared";
 import Hero from "@/components/hero.astro";
 import Project from "@/containers/project.astro";
 import Layout from "@/layouts/landing.astro";
-import { languageTag } from '@/paraglide/runtime';
+import { languageTag } from "@/paraglide/runtime";
 
 const currentPage = Page.Projects;
-const projects = await getCollection("projects", (e) => e.id.startsWith(languageTag()));
+const projects = await getCollection("projects", (e) =>
+  e.id.startsWith(languageTag())
+);
+const stats = await getReposStarts(
+  github,
+  projects.map((p) => p.data.source).filter((s): s is string => s !== undefined)
+);
 ---
 
 <Layout currentPage={currentPage}>
@@ -21,6 +28,8 @@ const projects = await getCollection("projects", (e) => e.id.startsWith(language
   {
     projects
       .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
-      .map((project) => <Project project={project} />)
+      .map((project) => (
+        <Project project={project} stars={stats[project.data.source ?? ""]} />
+      ))
   }
 </Layout>
