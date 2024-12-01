@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { getTopStarredActualRepos } from "@/lib/github";
+import { github, GITHUB_USERNAME, Page } from "@/shared";
+import { languageTag } from "@/paraglide/runtime";
+import * as m from '@/paraglide/messages';
+
+const topRepos = await getTopStarredActualRepos(github, {
+  username: GITHUB_USERNAME,
+});
+---
+
+<ul class="menu">
+  {
+    topRepos.map((repo) => (
+      <>
+        <li>
+          <a
+            target="_blank"
+            href={`https://github.com/${GITHUB_USERNAME}/${repo.name}`}
+          >
+            <span class="badge gap-2">
+              <Icon name="lucide:calendar" />
+              {new Date(repo.created_at ?? "").getFullYear()}
+            </span>
+            {repo.name}
+            <span class="badge gap-2">
+              <Icon name={`simple-icons:${repo.language?.toLowerCase()}`} />
+              {repo.language}
+            </span>
+            <span class="badge gap-2">
+              <Icon name="lucide:star" />
+              {repo.stargazers_count}
+            </span>
+          </a>
+        </li>
+        <li class="menu-title font-normal">{repo.description}</li>
+      </>
+    ))
+  }
+  <li>
+    <a
+      class="justify-center"
+      href={getRelativeLocaleUrl(languageTag(), Page.Projects)}>{m.goToProjects()}</a
+    >
+  </li>
+</ul>

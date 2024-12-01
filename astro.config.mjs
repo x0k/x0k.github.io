@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import paraglide from "@inlang/paraglide-astro";
@@ -31,6 +31,12 @@ export default defineConfig({
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
+    },
+  },
+  env: {
+    validateSecrets: true,
+    schema: {
+      GIT_HUB_TOKEN: envField.string({ access: "secret", context: "server" }),
     },
   },
 });

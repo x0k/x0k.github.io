@@ -5,6 +5,6 @@ export interface Props {
 
 const { class: className } = Astro.props;
 ---
-<h2 class={`text-3xl font-bold ${className}`} >
+<h2 class={`text-3xl print:text-2xl font-bold ${className}`} >
   <slot />
 </h2>

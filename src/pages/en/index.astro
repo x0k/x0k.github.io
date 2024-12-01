@@ -8,6 +8,7 @@ import Hero from "@/components/hero.astro";
 import ContentBlock from "@/components/content-block.astro";
 import Landing from "@/layouts/landing.astro";
 import { languageTag } from '@/paraglide/runtime';
+import TopProjects from '@/containers/top-projects.astro';
 
 const currentPage = Page.Resume;
 ---
@@ -56,7 +57,9 @@ const currentPage = Page.Resume;
         <div class="timeline-end mb-10">
           <time class="font-mono italic">December 2022 - Present</time>
           <div class="text-lg font-black">Open Source Developer</div>
-          Implementing my own projects, exploring new technologies:
+          Implementing my own projects:
+          <TopProjects />
+          DevOps things:
           <ul class="list-disc list-inside">
             <li>
               Set up infrastructure for developing personal projects (Docker,
@@ -65,34 +68,6 @@ const currentPage = Page.Resume;
             <li>
               Set up infrastructure and project monitoring (Grafana, Prometheus,
               Loki)
-            </li>
-            <li>
-              Developed:
-              <ul class="list-disc list-inside ml-4">
-                <li>
-                  Application and Telegram bot for scheduling appointments at a
-                  vet clinic (Next.js, Golang)
-                </li>
-                <li>
-                  Application for representing any JSON data in a tabular format
-                  (Typescript, React)
-                </li>
-                <li>Text preprocessor for organizing build scripts (Rust)</li>
-                <li>
-                  Browser extension for executing scripts in the browser
-                  (Typescript, React)
-                </li>
-                <li>
-                  Discord bot for real-time game statistics tracking (Golang)
-                </li>
-                <li>
-                  <a
-                    class="link"
-                    href={getRelativeLocaleUrl(languageTag(), Page.Projects)}
-                    >Learn more...</a
-                  >
-                </li>
-              </ul>
             </li>
           </ul>
         </div>

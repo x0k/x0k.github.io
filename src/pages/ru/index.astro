@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 import { Page, BIRTHDAY, EMAIL, GITHUB_LINK } from "@/shared";
@@ -7,7 +6,7 @@ import { getYearsSinceDate } from "@/lib/date";
 import Hero from "@/components/hero.astro";
 import ContentBlock from "@/components/content-block.astro";
 import Layout from "@/layouts/landing.astro";
-import { languageTag } from '@/paraglide/runtime';
+import TopProjects from '@/containers/top-projects.astro';
 
 const currentPage = Page.Resume;
 ---
@@ -25,9 +24,7 @@ const currentPage = Page.Resume;
         >
       </p>
       <p>
-        GitHub: <a class="link" target="_blank" href={GITHUB_LINK}
-          >x0k</a
-        >
+        GitHub: <a class="link" target="_blank" href={GITHUB_LINK}>x0k</a>
       </p>
       <p>Возраст: {getYearsSinceDate(BIRTHDAY)}</p>
     </ContentBlock>
@@ -59,7 +56,9 @@ const currentPage = Page.Resume;
         <div class="timeline-end mb-10">
           <time class="font-mono italic">Декабрь 2022 - Настоящее время</time>
           <div class="text-lg font-black">Open Source разработчик</div>
-          Реализую собственные проекты, изучаю новые технологии:
+          Реализую собственные проекты:
+          <TopProjects />
+          Не забываю про DevOps:
           <ul class="list-disc list-inside">
             <li>
               Настроил инфраструктуру для разработки собственных проектов
@@ -68,37 +67,6 @@ const currentPage = Page.Resume;
             <li>
               Настроил мониторинг инфраструктуры и проектов (Grafana,
               Prometheus, Loki)
-            </li>
-            <li>
-              Разработал:
-              <ul class="list-disc list-inside ml-4">
-                <li>
-                  Приложениe, телеграм бот для записи на прием в вет-клинику
-                  (Next.js, Golang)
-                </li>
-                <li>
-                  Приложение для представления любых JSON-данных в табличном
-                  виде (Typescript, React)
-                </li>
-                <li>
-                  Текстовый препроцессор для организации build скриптов (Rust)
-                </li>
-                <li>
-                  Браузерное расширение для исполнения скриптов в браузере
-                  (Typescript, React)
-                </li>
-                <li>
-                  Discord бот для отслеживания игровой статистики в реальном
-                  времени (Golang)
-                </li>
-                <li>
-                  <a
-                    class="link"
-                    href={getRelativeLocaleUrl(languageTag(), Page.Projects)}
-                    >Подробнее...</a
-                  >
-                </li>
-              </ul>
             </li>
           </ul>
         </div>
