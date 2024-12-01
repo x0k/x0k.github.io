@@ -25,7 +25,9 @@ const topRepos = await getTopStarredActualRepos(github, {
               <Icon name="lucide:calendar" />
               {new Date(repo.created_at ?? "").getFullYear()}
             </span>
+            <span class="font-bold" >
             {repo.name}
+            </span>
             <span class="badge gap-2">
               <Icon name={`simple-icons:${repo.language?.toLowerCase()}`} />
               {repo.language}
@@ -36,7 +38,7 @@ const topRepos = await getTopStarredActualRepos(github, {
             </span>
           </a>
         </li>
-        <li class="menu-title font-normal">{repo.description}</li>
+        <li class="menu-title font-normal font text-neutral-content">{repo.description}</li>
       </>
     ))
   }
