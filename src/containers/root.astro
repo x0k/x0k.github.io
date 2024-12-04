@@ -1,10 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import type { Page } from '@/shared';
-import { languageTag } from '@/paraglide/runtime';
-import * as m from '@/paraglide/messages'
-import { PAGE_TITLES } from '@/i18n';
+import type { Page } from "@/shared";
+import { languageTag } from "@/paraglide/runtime";
+import * as m from "@/paraglide/messages";
+import { PAGE_TITLES } from "@/i18n";
 
 interface Props {
   currentPage: Page;
@@ -25,6 +25,10 @@ const { currentPage, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{m.fullName()} - {PAGE_TITLES[currentPage]()}</title>
     <ClientRouter />
+    <script
+      data-goatcounter="https://counter.x0k.online/count"
+      async
+      src="https://counter.x0k.online/count.js"></script>
   </head>
   <body>
     <slot />
