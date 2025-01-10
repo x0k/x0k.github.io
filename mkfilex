@@ -1,23 +1,23 @@
-#!/usr/bin/bash -xe
+#!/usr/bin/env bash
 
 d:
-  npm run dev
+  pnpm run dev
 
 c:
-  npx astro check
+  pnpx astro check
 
 f:
-  npx prettier --write .
+  pnpx prettier --write .
 
 s:
-  npx astro sync
+  pnpx astro sync
 
 b:
-  npx astro build
+  pnpx astro build
 
 p:
-  npx astro preview
+  pnpx astro preview
 
 # paraglide-compile
 pc:
-  npm run paraglide-compile
+  pnpm run paraglide-compile

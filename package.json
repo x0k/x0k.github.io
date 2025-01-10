@@ -2,7 +2,7 @@
   "name": "x0k.github.io",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.12.0",
+  "packageManager": "pnpm@9.15.3",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -14,21 +14,21 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^5.1.2",
-    "@octokit/rest": "^21.0.2",
-    "astro": "^5.0.0-beta.12",
-    "astro-icon": "^1.1.4",
-    "tailwindcss": "^3.4.15",
-    "typescript": "^5.7.2"
+    "@astrojs/tailwind": "^5.1.4",
+    "@octokit/rest": "^21.1.0",
+    "astro": "^5.1.5",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.17",
-    "@iconify-json/simple-icons": "^1.2.13",
-    "@inlang/paraglide-astro": "^0.2.2",
-    "@inlang/paraglide-js": "1.11.3",
-    "@tailwindcss/typography": "^0.5.15",
-    "daisyui": "^4.12.14",
-    "prettier": "^3.4.1",
+    "@iconify-json/lucide": "^1.2.22",
+    "@iconify-json/simple-icons": "^1.2.19",
+    "@inlang/paraglide-astro": "^0.3.5",
+    "@inlang/paraglide-js": "1.11.8",
+    "@tailwindcss/typography": "^0.5.16",
+    "daisyui": "^4.12.23",
+    "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
