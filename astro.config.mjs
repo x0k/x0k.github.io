@@ -1,14 +1,14 @@
+// @ts-check
 import { fileURLToPath } from "node:url";
 import { defineConfig, envField } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import tailwindcss from "@tailwindcss/vite";
 import paraglide from "@inlang/paraglide-astro";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://x0k.online",
   integrations: [
-    tailwind(),
     icon(),
     paraglide({
       project: "./project.inlang",
@@ -27,6 +27,7 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),

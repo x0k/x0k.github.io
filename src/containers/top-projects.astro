@@ -5,47 +5,45 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { getTopStarredActualRepos } from "@/lib/github";
 import { github, GITHUB_USERNAME, Page } from "@/shared";
 import { languageTag } from "@/paraglide/runtime";
-import * as m from '@/paraglide/messages';
+import * as m from "@/paraglide/messages";
 
 const topRepos = await getTopStarredActualRepos(github, {
   username: GITHUB_USERNAME,
 });
 ---
 
-<ul class="menu">
+<ul class="list py-4">
   {
     topRepos.map((repo) => (
-      <>
-        <li>
-          <a
-            target="_blank"
-            href={`https://github.com/${GITHUB_USERNAME}/${repo.name}`}
-          >
-            <span class="badge gap-2">
-              <Icon name="lucide:calendar" />
-              {new Date(repo.created_at ?? "").getFullYear()}
-            </span>
-            <span class="font-bold" >
-            {repo.name}
-            </span>
-            <span class="badge gap-2">
-              <Icon name={`simple-icons:${repo.language?.toLowerCase()}`} />
-              {repo.language}
-            </span>
-            <span class="badge gap-2">
-              <Icon name="lucide:star" />
-              {repo.stargazers_count}
-            </span>
-          </a>
-        </li>
-        <li class="menu-title font-normal font text-neutral-content">{repo.description}</li>
-      </>
+      <li class="list-row items-center">
+        <Icon
+          class="size-8 rounded-xs"
+          name={`simple-icons:${repo.language?.toLowerCase()}`}
+        />
+        <a
+          class="list-col-grow"
+          target="_blank"
+          href={`https://github.com/${GITHUB_USERNAME}/${repo.name}`}
+        >
+          <div>{repo.name}</div>
+          <div class="list-col-wrap text-xs opacity-60">{repo.description}</div>
+        </a>
+        <span class="badge gap-2">
+          <Icon name="lucide:star" />
+          {repo.stargazers_count}
+        </span>
+        <span class="badge gap-2">
+          <Icon name="lucide:calendar" />
+          {new Date(repo.created_at ?? "").getFullYear()}
+        </span>
+      </li>
     ))
   }
-  <li>
+  <li class="tracking-wide">
     <a
-      class="justify-center"
-      href={getRelativeLocaleUrl(languageTag(), Page.Projects)}>{m.goToProjects()}</a
+      class="btn btn-ghost w-full"
+      href={getRelativeLocaleUrl(languageTag(), Page.Projects)}
+      >{m.goToProjects()}</a
     >
   </li>
 </ul>
