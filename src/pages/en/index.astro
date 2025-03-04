@@ -1,5 +1,4 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 import { BIRTHDAY, EMAIL, GITHUB_LINK, Page } from "@/shared";
@@ -7,8 +6,7 @@ import { getYearsSinceDate } from "@/lib/date";
 import Hero from "@/components/hero.astro";
 import ContentBlock from "@/components/content-block.astro";
 import Landing from "@/layouts/landing.astro";
-import { languageTag } from '@/paraglide/runtime';
-import TopProjects from '@/containers/top-projects.astro';
+import TopProjects from "@/containers/top-projects.astro";
 
 const currentPage = Page.Resume;
 ---

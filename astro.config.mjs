@@ -3,18 +3,12 @@ import { fileURLToPath } from "node:url";
 import { defineConfig, envField } from "astro/config";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
-import paraglide from "@inlang/paraglide-astro";
+import { paraglideVitePlugin } from "@inlang/paraglide-js";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://x0k.online",
-  integrations: [
-    icon(),
-    paraglide({
-      project: "./project.inlang",
-      outdir: "./src/paraglide",
-    }),
-  ],
+  integrations: [icon()],
   i18n: {
     defaultLocale: "ru",
     locales: ["ru", "en"],
@@ -27,7 +21,24 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      paraglideVitePlugin({
+        project: "./project.inlang",
+        outdir: "./src/paraglide",
+        strategy: ["url", "baseLocale"],
+        urlPatterns: [
+          {
+            pattern: ":protocol://:domain(.*)::port?/:locale(ru|en)?/:path(.*)?",
+            deLocalizedNamedGroups: { locale: null },
+            localizedNamedGroups: {
+              en: { locale: "en" },
+              ru: { locale: "ru" },
+            },
+          },
+        ],
+      }),
+    ],
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),

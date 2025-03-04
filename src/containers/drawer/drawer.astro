@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { Icon } from "astro-icon/components";
 
 import { Page, EMAIL, GITHUB_LINK } from "@/shared";
 import ThemeController from "@/components/theme-controller.astro";
-import { languageTag } from '@/paraglide/runtime';
-import { NEXT_LANG, PAGE_TITLES } from '@/i18n';
+import { getLocale, localizeHref } from "@/paraglide/runtime";
+import { NEXT_LANG, PAGE_TITLES } from "@/i18n";
 
 import Stats from "./stats.astro";
 import PrintButton from "./print-button.astro";
@@ -18,7 +17,8 @@ interface Props {
 const { currentPage } = Astro.props;
 
 const projects = await getCollection("projects");
-const nextLang = NEXT_LANG[languageTag()];
+const lang = getLocale()
+const nextLang = NEXT_LANG[lang];
 ---
 
 <div class="drawer bg-base-100 lg:drawer-open">
@@ -78,7 +78,7 @@ const nextLang = NEXT_LANG[languageTag()];
             <li>
               <a
                 class="text-base data-[active=true]:bg-base-300 py-3"
-                href={getRelativeLocaleUrl(languageTag(), page)}
+                href={localizeHref(page)}
                 data-active={page === currentPage}
               >
                 {PAGE_TITLES[page]()}
@@ -100,9 +100,9 @@ const nextLang = NEXT_LANG[languageTag()];
         <ThemeController />
         <a
           class="font-semibold"
-          href={getRelativeLocaleUrl(nextLang, currentPage)}
+          href={localizeHref(currentPage, { locale: nextLang })}
         >
-          {languageTag().toLocaleUpperCase()}
+          {lang.toLocaleUpperCase()}
         </a>
       </div>
     </aside>

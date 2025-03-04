@@ -1,8 +1,8 @@
 import { Page } from './shared';
-import type { AvailableLanguageTag } from './paraglide/runtime';
+import type { Locale } from './paraglide/runtime';
 import * as m from './paraglide/messages';
 
-export const NEXT_LANG: Record<AvailableLanguageTag, AvailableLanguageTag> = {
+export const NEXT_LANG: Record<Locale, Locale> = {
   en: "ru",
   ru: "en",
 }

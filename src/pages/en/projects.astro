@@ -5,10 +5,10 @@ import { Page } from "@/shared";
 import Hero from "@/components/hero.astro";
 import Project from "@/containers/project.astro";
 import Layout from "@/layouts/landing.astro";
-import { languageTag } from '@/paraglide/runtime';
+import { getLocale } from '@/paraglide/runtime';
 
 const currentPage = Page.Projects;
-const projects = await getCollection("projects", (e) => e.id.startsWith(languageTag()));
+const projects = await getCollection("projects", (e) => e.id.startsWith(getLocale()));
 ---
 
 <Layout currentPage={currentPage}>
