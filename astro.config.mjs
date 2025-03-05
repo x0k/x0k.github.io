@@ -29,11 +29,12 @@ export default defineConfig({
         strategy: ["url", "baseLocale"],
         urlPatterns: [
           {
-            pattern: ":protocol://:domain(.*)::port?/:locale(ru|en)?/:path(.*)?",
+            pattern:
+              ":protocol://:domain(.*)::port?/:locale(ru|en)?/:path(.*)?",
             deLocalizedNamedGroups: { locale: null },
             localizedNamedGroups: {
-              en: { locale: "en" },
               ru: { locale: "ru" },
+              en: { locale: "en" },
             },
           },
         ],

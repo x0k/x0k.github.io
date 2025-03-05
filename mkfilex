@@ -4,19 +4,19 @@ d:
   pnpm run dev
 
 c:
-  pnpx astro check
+  pnpm astro check
 
 f:
-  pnpx prettier --write .
+  pnpm prettier --write .
 
 s:
-  pnpx astro sync
+  pnpm astro sync
 
 b:
-  pnpx astro build
+  pnpm astro build
 
 p:
-  pnpx astro preview
+  pnpm astro preview
 
 # paraglide-compile
 pc:

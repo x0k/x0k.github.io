@@ -3,7 +3,7 @@ import { GIT_HUB_TOKEN } from 'astro:env/server'
 
 export enum Page {
   Resume = "/",
-  Projects = "projects",
+  Projects = "/projects",
 }
 
 export const BIRTHDAY = new Date(1997, 7, 31);
