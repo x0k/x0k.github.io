@@ -2,7 +2,7 @@
 
 Some information about me and my projects.
 
-Website: [x0k.online](https://x0k.online)
+Website: [x0k.dev](https://x0k.dev)
 
 ## See also
 

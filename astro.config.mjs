@@ -7,7 +7,7 @@ import { paraglideVitePlugin } from "@inlang/paraglide-js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://x0k.online",
+  site: "https://x0k.dev",
   integrations: [icon()],
   i18n: {
     defaultLocale: "ru",
