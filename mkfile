@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 d:
-  pnpm run dev
+  pnpm dev
 
 c:
-  pnpm astro check
+  pnpm check
 
 f:
   pnpm prettier --write .
@@ -13,10 +13,10 @@ s:
   pnpm astro sync
 
 b:
-  pnpm astro build
+  pnpm build
 
 p:
-  pnpm astro preview
+  pnpm preview
 
 # paraglide-compile
 pc:
