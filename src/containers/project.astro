@@ -18,9 +18,10 @@ import {
 interface Props {
   project: CollectionEntry<"projects">;
   stars?: number;
+  npmDownloads?: number
 }
 
-const { project, stars } = Astro.props;
+const { project, stars, npmDownloads } = Astro.props;
 const { Content } = await render(project);
 ---
 
@@ -106,6 +107,14 @@ const { Content } = await render(project);
         <a target="_blank" href={`${project.data.source}/stargazers`} class="badge badge-ghost gap-2">
           <Icon name="lucide:star" />
           {stars}
+        </a>
+      )
+    }
+    {
+      Boolean(npmDownloads) && (
+        <a target="_blank" href={`https://npmjs.com/package/${project.data.npmPackage}`} class="badge badge-ghost gap-2">
+          <Icon name="lucide:download" />
+          {npmDownloads?.toLocaleString()}
         </a>
       )
     }

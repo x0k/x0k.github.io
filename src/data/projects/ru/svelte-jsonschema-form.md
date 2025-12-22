@@ -12,6 +12,7 @@ stack:
   - svelte
 infra:
   - npm
+npmPackage: "@sjsf/form"
 ---
 
 Svelte 5 библиотека для создания форм на основе JSON схем.

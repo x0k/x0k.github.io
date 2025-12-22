@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 
 import { getReposStarts } from "@/lib/github";
+import { getPackageLastWeekDownloads } from "@/lib/npm";
 import { github, Page } from "@/shared";
 import Hero from "@/components/hero.astro";
 import Project from "@/containers/project.astro";
@@ -12,24 +13,34 @@ const currentPage = Page.Projects;
 const projects = await getCollection("projects", (e) =>
   e.id.startsWith(getLocale())
 );
+const sorted = projects.sort(
+  (a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime()
+);
 const stats = await getReposStarts(
   github,
   projects.map((p) => p.data.source).filter((s): s is string => s !== undefined)
 );
+const npmDownloads = await Promise.all(
+  sorted.map(({ data: { npmPackage } }) =>
+    npmPackage ? getPackageLastWeekDownloads(npmPackage) : 0
+  )
+);
 ---
 
 <Layout currentPage={currentPage}>
-  <Hero class="max-lg:hidden print:!block print:mb-6">
+  <Hero class="max-lg:hidden print:block! print:mb-6">
     <Fragment slot="title"> Проекты </Fragment>
     <Fragment slot="subtitle">
       С открытым исходным кодом и/или с публичным доступом
     </Fragment>
   </Hero>
   {
-    projects
-      .sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime())
-      .map((project) => (
-        <Project project={project} stars={stats[project.data.source ?? ""]} />
-      ))
+    sorted.map((p, i) => (
+      <Project
+        project={p}
+        npmDownloads={npmDownloads[i]}
+        stars={stats[p.data.source ?? ""]}
+      />
+    ))
   }
 </Layout>

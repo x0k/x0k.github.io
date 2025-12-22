@@ -53,6 +53,7 @@ const projectSchema = z.object({
       ])
     )
     .optional(),
+  npmPackage: z.string().optional(),
 });
 
 export type ProjectSchema = z.infer<typeof projectSchema>;

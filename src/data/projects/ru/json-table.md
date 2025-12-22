@@ -12,6 +12,7 @@ stack:
   - svelte
 infra:
   - githubPages
+npmPackage: "@json-table/core"
 ---
 Приложение для представления любых JSON-данных в табличном виде.
 

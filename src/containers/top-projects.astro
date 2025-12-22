@@ -1,47 +1,81 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 
 import { getTopStarredActualRepos } from "@/lib/github";
 import { github, GITHUB_USERNAME, Page } from "@/shared";
 import { localizeHref } from "@/paraglide/runtime";
 import * as m from "@/paraglide/messages";
+import { getPackageLastWeekDownloads } from "@/lib/npm";
 
 const topRepos = await getTopStarredActualRepos(github, {
   username: GITHUB_USERNAME,
 });
+const repoUrls = topRepos.map(
+  (r) => `https://github.com/${GITHUB_USERNAME}/${r.name}`
+);
+const repoUrlsSet = new Set(repoUrls);
+const npmPackages = await getCollection(
+  "projects",
+  ({ data: { source, npmPackage } }) =>
+    source && repoUrlsSet.has(source) && npmPackage
+);
+const npmDownloads = new Map(
+  await Promise.all(
+    npmPackages.map((p) =>
+      getPackageLastWeekDownloads(p.data.npmPackage!).then(
+        (downloads) =>
+          [p.data.source!, { downloads, pkg: p.data.npmPackage! }] as const
+      )
+    )
+  )
+);
 ---
 
 <ul class="list py-4">
   {
-    topRepos.map((repo) => (
-      <li class="list-row items-center">
-        <Icon
-          class="size-8 rounded-xs"
-          name={`simple-icons:${repo.language?.toLowerCase()}`}
-        />
-        <a
-          class="list-col-grow"
-          target="_blank"
-          href={`https://github.com/${GITHUB_USERNAME}/${repo.name}`}
-        >
-          <div>{repo.name}</div>
-          <div class="list-col-wrap text-xs opacity-60">{repo.description}</div>
-        </a>
-        <span class="badge gap-2">
-          <Icon name="lucide:star" />
-          {repo.stargazers_count}
-        </span>
-        <span class="badge gap-2">
-          <Icon name="lucide:calendar" />
-          {new Date(repo.created_at ?? "").getFullYear()}
-        </span>
-      </li>
-    ))
+    topRepos.map((repo, i) => {
+      const stats = npmDownloads.get(repoUrls[i]);
+      return (
+        <li class="list-row items-center">
+          <Icon
+            class="size-8 rounded-xs"
+            name={`simple-icons:${repo.language?.toLowerCase()}`}
+          />
+          <a class="list-col-grow" target="_blank" href={repoUrls[i]}>
+            <div>{repo.name}</div>
+            <div class="list-col-wrap text-xs opacity-60">
+              {repo.description}
+            </div>
+          </a>
+          {stats && (
+            <a
+              target="_blank"
+              href={`https://npmjs.com/package/${stats.pkg}`}
+              class="badge gap-2"
+            >
+              <Icon name="lucide:download" />
+              {stats.downloads.toLocaleString()}
+            </a>
+          )}
+          <a
+            target="_blank"
+            href={`${repoUrls[i]}/stargazers`}
+            class="badge gap-2"
+          >
+            <Icon name="lucide:star" />
+            {repo.stargazers_count}
+          </a>
+          <span class="badge gap-2">
+            <Icon name="lucide:calendar" />
+            {new Date(repo.created_at ?? "").getFullYear()}
+          </span>
+        </li>
+      );
+    })
   }
   <li class="tracking-wide">
-    <a
-      class="btn btn-ghost w-full"
-      href={localizeHref(Page.Projects)}
+    <a class="btn btn-ghost w-full" href={localizeHref(Page.Projects)}
       >{m.goToProjects()}</a
     >
   </li>

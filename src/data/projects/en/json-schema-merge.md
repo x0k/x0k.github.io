@@ -9,6 +9,7 @@ languages:
   - typescript
 infra:
   - npm
+npmPackage: "@x0k/json-schema-merge"
 ---
 
 A modern library for correctly merging JSON Schema Draft-07 schemas
