@@ -2,7 +2,7 @@
   "name": "x0k.github.io",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -13,21 +13,21 @@
     "postinstall": "npm run paraglide-compile"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
+    "@astrojs/check": "^0.9.6",
     "@octokit/rest": "^22.0.1",
-    "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.4.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
     "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.72",
-    "@iconify-json/simple-icons": "^1.2.57",
+    "@iconify-json/lucide": "^1.2.87",
+    "@iconify-json/simple-icons": "^1.2.68",
     "@inlang/paraglide-js": "2.0.0-beta.26",
     "@tailwindcss/typography": "^0.5.19",
-    "daisyui": "5.4.7",
-    "prettier": "^3.6.2",
+    "daisyui": "5.5.14",
+    "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
