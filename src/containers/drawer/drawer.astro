@@ -17,7 +17,7 @@ interface Props {
 const { currentPage } = Astro.props;
 
 const projects = await getCollection("projects");
-const lang = getLocale()
+const lang = getLocale();
 const nextLang = NEXT_LANG[lang];
 ---
 
@@ -93,6 +93,9 @@ const nextLang = NEXT_LANG[lang];
       >
         <a target="_blank" href={GITHUB_LINK}>
           <Icon size={24} name="simple-icons:github" />
+        </a>
+        <a target="_blank" href="https://discord.gg/hVxFWk7dRn">
+          <Icon size={24} name="simple-icons:discord" />
         </a>
         <a target="_blank" href={`mailto:${EMAIL}`}>
           <Icon size={24} name="lucide:mail" />
