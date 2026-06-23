@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "zod";
 
 const projectSchema = z.object({
   archived: z.boolean().optional(),
@@ -13,8 +14,8 @@ const projectSchema = z.object({
     "package",
   ]),
   name: z.string(),
-  source: z.string().url().optional(),
-  link: z.string().url().optional(),
+  source: z.url().optional(),
+  link: z.url().optional(),
   createdAt: z.date(),
   languages: z
     .array(z.enum(["typescript", "golang", "delphi", "dart", "rust"]))
@@ -33,7 +34,7 @@ const projectSchema = z.object({
         "telegram",
         "webassembly",
         "astro",
-      ])
+      ]),
     )
     .optional(),
   infra: z
@@ -50,13 +51,13 @@ const projectSchema = z.object({
         "traefik",
         "nix",
         "npm",
-      ])
+      ]),
     )
     .optional(),
   npmPackage: z.string().optional(),
 });
 
-export type ProjectSchema = z.infer<typeof projectSchema>;
+export type ProjectSchema = z.output<typeof projectSchema>;
 
 const projectCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/projects" }),
